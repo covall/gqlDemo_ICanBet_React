@@ -1,5 +1,5 @@
 import React from 'react'
-import Flag from 'react-flags'
+import Flag from 'react-world-flags'
 import { Flex, Box } from 'reflexbox'
 import { format } from 'date-fns'
 import styled from 'styled-components'
@@ -24,11 +24,9 @@ const Match = ({
       <Box>
         <Flex align="center">
           <Flag
-            name={teamACode}
-            alt={teamAName}
-            format="png"
-            pngSize={large ? 64 : 32}
-            basePath="/flags"
+            code={teamACode}
+            fallback={teamACode}
+            height={large ? 64 : 32}
           />
 
           <TeamName>{teamAName}</TeamName>
@@ -46,11 +44,9 @@ const Match = ({
       <Box>
         <Flex align="center">
           <Flag
-            name={teamBCode}
-            alt={teamBName}
-            format="png"
-            pngSize={large ? 64 : 32}
-            basePath="/flags"
+            code={teamBCode}
+            fallback={teamBCode}
+            height={large ? 64 : 32}
           />
 
           <TeamName>{teamBName}</TeamName>
