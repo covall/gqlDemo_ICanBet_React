@@ -1,9 +1,11 @@
 import React from 'react'
+
 import PageTitle from '../PageTitle'
+import PageContent from '../PageContent'
 
 const BetsPage = () => (
   <PageTitle title="Zakłady">
-    Zakłady
+    <PageContent>Zakłady</PageContent>
   </PageTitle>
 )
 
