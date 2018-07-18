@@ -1,5 +1,7 @@
 import React from 'react'
 import ReactHighcharts from 'react-highcharts'
+import { Query } from 'react-apollo'
+import gql from 'graphql-tag'
 
 import PageTitle from '../PageTitle'
 import PageContent from '../PageContent'
@@ -18,7 +20,7 @@ const ResultsPage = ({ data }) => {
   )
 }
 
-const ResultsPageConnected = () => {
+const ResultsPageConnectedMock = () => {
   const data = {
     games: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }],
     playerPoints: [
@@ -30,6 +32,56 @@ const ResultsPageConnected = () => {
     ]
   }
 
+  const dataCumulative = getCumulativePoints(data)
+
+  return <ResultsPage data={dataCumulative} />
+}
+
+const ResultsPageConnectedToGQL = () => (
+  <Query
+    query={gql`
+      {
+        allGames {
+          id
+        }
+        allGamblers {
+          id
+          bets {
+            game {
+              id
+            }
+            score
+          }
+        }
+      }
+    `}
+  >
+    {({ loading, error, data }) => {
+      if (loading) return <div>Ładuję</div>
+      if (error) return <div>Error :(</div>
+
+      const graphData = {
+        games: data.allGames,
+        playerPoints: data.allGamblers.map(gambler => {
+          const pointsArray = Array(data.allGames.length).fill(0)
+          gambler.bets.forEach(bet => {
+            pointsArray[bet.game.id - 1] = bet.score
+          })
+          return {
+            name: gambler.id,
+            points: pointsArray
+          }
+        })
+      }
+
+      const dataCumulative = getCumulativePoints(graphData)
+
+      return <ResultsPage data={dataCumulative} />
+    }}
+  </Query>
+)
+
+function getCumulativePoints(data) {
   const playerPointsCumulative = data.playerPoints.map(pp => {
     const pointsCumulative = []
     pp.points.reduce((prev, curr, index) => {
@@ -37,10 +89,8 @@ const ResultsPageConnected = () => {
     }, 0)
     return { ...pp, points: pointsCumulative }
   })
-
   const dataCumulative = { ...data, playerPoints: playerPointsCumulative }
-
-  return <ResultsPage data={dataCumulative} />
+  return dataCumulative
 }
 
-export default ResultsPageConnected
+export default ResultsPageConnectedToGQL
