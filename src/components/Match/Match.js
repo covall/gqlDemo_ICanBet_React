@@ -1,14 +1,15 @@
 import React from 'react'
 import ReactFlag from 'react-world-flags'
-import { Flex } from 'reflexbox'
 import { format } from 'date-fns'
 import styled from 'styled-components'
+import { withMedia } from 'react-media-query-hoc'
 
 const Match = ({
   className,
   large,
   date,
   group,
+  media,
   teamACode,
   teamAName,
   teamBCode,
@@ -18,22 +19,22 @@ const Match = ({
   resultPenaltyA,
   resultPenaltyB
 }) => (
-  <Flex align="center" justify="space-between" className={className}>
+  <div className={className}>
     <MatchDate>{format(new Date(date), 'DD-MM')}</MatchDate>
 
-    <MatchDetails justify="space-between" align="center" auto>
+    <MatchDetails>
       <Team left>
-        <Flag code={teamACode} fallback={teamACode} large left />
+        <Flag code={teamACode} fallback={teamACode} large={media.desktop} left />
 
         <TeamName>{teamAName}</TeamName>
       </Team>
 
       <ResultDetails>
         <Result>
-          {resultA} - {resultB}{' '}
+          {resultA} : {resultB}{' '}
           {resultPenaltyA &&
             resultPenaltyB &&
-            `(${resultPenaltyA} - ${resultPenaltyB})`}
+            `(${resultPenaltyA} : ${resultPenaltyB})`}
         </Result>
 
         <Group>Grupa {group}</Group>
@@ -42,10 +43,10 @@ const Match = ({
       <Team right>
         <TeamName>{teamBName}</TeamName>
 
-        <Flag code={teamBCode} fallback={teamBCode} large right />
+        <Flag code={teamBCode} fallback={teamBCode} large={media.desktop} right />
       </Team>
     </MatchDetails>
-  </Flex>
+  </div>
 )
 
 const Team = styled.div`
@@ -69,13 +70,17 @@ const Flag = styled(({ className, code, large }) => (
   box-shadow: ${props => props.right && '-1px 0px 1px #c0c0c0'};
 `
 
-const MatchDate = styled(Flex)`
+const MatchDate = styled.div`
   opacity: 0.5;
   margin-right: 44px;
   font-size: 14px;
 `
 
-const MatchDetails = styled(Flex)`
+const MatchDetails = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1 1 auto;
   border: 1px solid #d7d7d7;
   border-radius: 5px;
   overflow: hidden;
@@ -86,7 +91,7 @@ const TeamName = styled.div`
   margin: 0 30px;
 `
 
-const ResultDetails = styled(Flex)`
+const ResultDetails = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -106,7 +111,10 @@ const Group = styled.div`
   opacity: 0.3;
 `
 
-export default styled(Match)`
+export default styled(withMedia(Match))`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
   margin-bottom: 30px;
 `
