@@ -46,7 +46,6 @@ const MatchesPage = () => (
         />
 
         <Match
-          large
           date="2018-07-17T00:00:00.000Z"
           group="A"
           teamACode="RUS"

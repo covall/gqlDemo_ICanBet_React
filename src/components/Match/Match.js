@@ -2,14 +2,12 @@ import React from 'react'
 import ReactFlag from 'react-world-flags'
 import { format } from 'date-fns'
 import styled from 'styled-components'
-import { withMedia } from 'react-media-query-hoc'
 
 const Match = ({
   className,
   large,
   date,
   group,
-  media,
   teamACode,
   teamAName,
   teamBCode,
@@ -24,9 +22,9 @@ const Match = ({
 
     <MatchDetails>
       <Team left>
-        <Flag code={teamACode} fallback={teamACode} large={media.desktop} left />
+        <Flag code={teamACode} fallback={teamACode} large={large} left />
 
-        <TeamName>{teamAName}</TeamName>
+        {large && <TeamName>{teamAName}</TeamName>}
       </Team>
 
       <ResultDetails>
@@ -37,13 +35,13 @@ const Match = ({
             `(${resultPenaltyA} : ${resultPenaltyB})`}
         </Result>
 
-        <Group>Grupa {group}</Group>
+        {large && <Group>Grupa {group}</Group>}
       </ResultDetails>
 
       <Team right>
-        <TeamName>{teamBName}</TeamName>
+        {large && <TeamName>{teamBName}</TeamName>}
 
-        <Flag code={teamBCode} fallback={teamBCode} large={media.desktop} right />
+        <Flag code={teamBCode} fallback={teamBCode} large={large} right />
       </Team>
     </MatchDetails>
   </div>
@@ -52,7 +50,7 @@ const Match = ({
 const Team = styled.div`
   display: flex;
   align-items: center;
-  width: 300px;
+  width: ${props => (props.large ? '300px' : 'auto')};
   justify-content: ${props => props.left && 'flex-start'};
   justify-content: ${props => props.right && 'flex-end'};
 `
@@ -72,7 +70,7 @@ const Flag = styled(({ className, code, large }) => (
 
 const MatchDate = styled.div`
   opacity: 0.5;
-  margin-right: 44px;
+  margin-right: ${props => (props.large ? '44px' : '24px')};
   font-size: 14px;
 `
 
@@ -100,7 +98,7 @@ const ResultDetails = styled.div`
 
 const Result = styled.div`
   font-weight: 700;
-  font-size: 28px;
+  font-size: ${props => (props.large ? '28px' : '14px')};
 `
 
 const Group = styled.div`
@@ -111,7 +109,7 @@ const Group = styled.div`
   opacity: 0.3;
 `
 
-export default styled(withMedia(Match))`
+export default styled(Match)`
   display: flex;
   align-items: center;
   justify-content: space-between;
