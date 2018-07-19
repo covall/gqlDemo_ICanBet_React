@@ -10,17 +10,16 @@ const Wrapper = styled(Flex)`
 
 const InnerWrapper = styled.div`
   width: 100%;
-  max-width: ${desktop.min}px;
-  padding: 0 20px;
+  max-width: ${props => !props.fullWidth && `${desktop.min}px`};
 `
 
 const Contents = styled.div`
   padding: 0 20px;
 `
 
-const PageContent = ({ children }) => (
+const PageContent = ({ children, fullWidth }) => (
   <Wrapper align="center" column>
-    <InnerWrapper>
+    <InnerWrapper fullWidth={fullWidth}>
       <Contents>{children}</Contents>
     </InnerWrapper>
   </Wrapper>

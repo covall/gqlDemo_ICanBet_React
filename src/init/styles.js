@@ -1,5 +1,6 @@
 import { injectGlobal } from 'styled-components'
 import reset from 'styled-reset'
+import 'react-sticky-table/dist/react-sticky-table.css';
 
 injectGlobal`
   ${reset}

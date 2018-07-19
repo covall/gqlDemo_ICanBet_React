@@ -20,22 +20,22 @@ const ResultsPage = ({ data }) => {
   )
 }
 
-const ResultsPageConnectedMock = () => {
-  const data = {
-    games: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }],
-    playerPoints: [
-      { name: 'Kosa', points: [0, 1, 4, 0, 2] },
-      { name: 'Michał K.', points: [0, 2, 2, 0, 2] },
-      { name: 'Arek G.', points: [4, 1, 4, 0, 0] },
-      { name: 'Kalbar', points: [0, 2, 4, 2, 2] },
-      { name: 'Wujek Gaweł', points: [2, 4, 2, 0, 2] }
-    ]
-  }
-
-  const dataCumulative = getCumulativePoints(data)
-
-  return <ResultsPage data={dataCumulative} />
-}
+// const ResultsPageConnectedMock = () => {
+//   const data = {
+//     games: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }],
+//     playerPoints: [
+//       { name: 'Kosa', points: [0, 1, 4, 0, 2] },
+//       { name: 'Michał K.', points: [0, 2, 2, 0, 2] },
+//       { name: 'Arek G.', points: [4, 1, 4, 0, 0] },
+//       { name: 'Kalbar', points: [0, 2, 4, 2, 2] },
+//       { name: 'Wujek Gaweł', points: [2, 4, 2, 0, 2] }
+//     ]
+//   }
+//
+//   const dataCumulative = getCumulativePoints(data)
+//
+//   return <ResultsPage data={dataCumulative} />
+// }
 
 const ResultsPageConnectedToGQL = () => (
   <Query
