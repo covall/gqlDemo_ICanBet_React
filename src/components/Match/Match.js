@@ -2,49 +2,71 @@ import React from 'react'
 import ReactFlag from 'react-world-flags'
 import { format } from 'date-fns'
 import styled from 'styled-components'
+import { withMedia } from 'react-media-query-hoc'
 
-const Match = ({
-  className,
-  large,
-  date,
-  group,
-  teamACode,
-  teamAName,
-  teamBCode,
-  teamBName,
-  resultA,
-  resultB,
-  resultPenaltyA,
-  resultPenaltyB
-}) => (
-  <div className={className}>
-    <MatchDate>{format(new Date(date), 'DD-MM')}</MatchDate>
+const Match = withMedia(
+  ({
+    className,
+    large,
+    date,
+    group,
+    media,
+    teamACode,
+    teamAName,
+    teamBCode,
+    teamBName,
+    resultA,
+    resultB,
+    resultPenaltyA,
+    resultPenaltyB
+  }) => {
+    const sizeLarge = !media.mobile && large
 
-    <MatchDetails>
-      <Team left>
-        <Flag code={teamACode} fallback={teamACode} large={large} left />
+    return (
+      <MatchContainer>
+        <MatchDate large={sizeLarge}>
+          {format(new Date(date), 'DD-MM')}
+        </MatchDate>
 
-        {large && <TeamName>{teamAName}</TeamName>}
-      </Team>
+        <MatchDetails>
+          <Team large={sizeLarge} left>
+            <Flag
+              code={teamACode}
+              teamName={teamAName}
+              fallback={teamACode}
+              large={sizeLarge}
+              left
+            />
 
-      <ResultDetails>
-        <Result>
-          {resultA} : {resultB}{' '}
-          {resultPenaltyA &&
-            resultPenaltyB &&
-            `(${resultPenaltyA} : ${resultPenaltyB})`}
-        </Result>
+            {sizeLarge && <TeamName left>{teamAName}</TeamName>}
+          </Team>
 
-        {large && <Group>Grupa {group}</Group>}
-      </ResultDetails>
+          <ResultDetails>
+            <Result large={sizeLarge}>
+              {resultA} : {resultB}{' '}
+              {resultPenaltyA &&
+                resultPenaltyB &&
+                `(${resultPenaltyA} : ${resultPenaltyB})`}
+            </Result>
 
-      <Team right>
-        {large && <TeamName>{teamBName}</TeamName>}
+            {sizeLarge && <Group>Grupa {group}</Group>}
+          </ResultDetails>
 
-        <Flag code={teamBCode} fallback={teamBCode} large={large} right />
-      </Team>
-    </MatchDetails>
-  </div>
+          <Team large={sizeLarge} right>
+            {sizeLarge && <TeamName right>{teamBName}</TeamName>}
+
+            <Flag
+              code={teamBCode}
+              teamName={teamBName}
+              fallback={teamBCode}
+              large={sizeLarge}
+              right
+            />
+          </Team>
+        </MatchDetails>
+      </MatchContainer>
+    )
+  }
 )
 
 const Team = styled.div`
@@ -55,11 +77,17 @@ const Team = styled.div`
   justify-content: ${props => props.right && 'flex-end'};
 `
 
-const Flag = styled(({ className, code, large }) => (
+const Flag = styled(({ className, code, large, teamName }) => (
   <div className={className}>
-    <ReactFlag code={code} fallback={code} height={large ? 64 : 32} />
+    <ReactFlag
+      code={code}
+      fallback={code}
+      title={teamName}
+      height={large ? 64 : 32}
+    />
   </div>
 ))`
+  flex-shrink: 0;
   display: flex;
   justify-content: center;
   overflow: hidden;
@@ -69,6 +97,7 @@ const Flag = styled(({ className, code, large }) => (
 `
 
 const MatchDate = styled.div`
+  flex-shrink: 0;
   opacity: 0.5;
   margin-right: ${props => (props.large ? '44px' : '24px')};
   font-size: 14px;
@@ -87,9 +116,12 @@ const MatchDetails = styled.div`
 const TeamName = styled.div`
   font-size: 18px;
   margin: 0 30px;
+  text-align: ${props => props.left && 'left'};
+  text-align: ${props => props.right && 'right'};
 `
 
 const ResultDetails = styled.div`
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -109,10 +141,12 @@ const Group = styled.div`
   opacity: 0.3;
 `
 
-export default styled(Match)`
+const MatchContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   margin-bottom: 30px;
 `
+
+export default Match
