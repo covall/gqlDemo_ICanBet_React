@@ -41,16 +41,18 @@ const ResultsPageConnectedToGQL = () => (
   <Query
     query={gql`
       {
-        allGames {
+        games {
           id
         }
-        allGamblers {
+        gamblers {
           id
+          place
+          points
           bets {
             game {
               id
             }
-            score
+            points
           }
         }
       }
@@ -61,11 +63,11 @@ const ResultsPageConnectedToGQL = () => (
       if (error) return <div>Error :(</div>
 
       const graphData = {
-        games: data.allGames,
-        playerPoints: data.allGamblers.map(gambler => {
-          const pointsArray = Array(data.allGames.length).fill(0)
+        games: data.games,
+        playerPoints: data.gamblers.map(gambler => {
+          const pointsArray = Array(data.games.length).fill(0)
           gambler.bets.forEach(bet => {
-            pointsArray[bet.game.id - 1] = bet.score
+            pointsArray[bet.game.id - 1] = bet.points
           })
           return {
             name: gambler.id,
