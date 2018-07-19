@@ -100,8 +100,230 @@ const BetsPage = () => (
             <BetWithScore resultA={2} resultB={1} score={4} />
           </Cell>
           <Cell>
-            <BetWithScore resultA={2} resultB={2} penaltyWinner="RUS" score={4} />
+            <BetWithScore
+              resultA={2}
+              resultB={2}
+              penaltyWinner="RUS"
+              score={4}
+            />
           </Cell>
+          <Cell>cell 4</Cell>
+          <Cell>cell 5</Cell>
+          <Cell>cell 6</Cell>
+          <Cell>cell 1</Cell>
+          <Cell>cell 2</Cell>
+          <Cell>cell 3</Cell>
+          <Cell>cell 4</Cell>
+          <Cell>cell 5</Cell>
+          <Cell>cell 6</Cell>
+          <Cell>cell 1</Cell>
+          <Cell>cell 2</Cell>
+          <Cell>cell 3</Cell>
+          <Cell>cell 4</Cell>
+          <Cell>cell 5</Cell>
+          <Cell>cell 6</Cell>
+        </Row>
+        <Row>
+          <Cell first>
+            <Match
+              date="2018-07-17T00:00:00.000Z"
+              group="A"
+              teamACode="RUS"
+              teamAName="Rosja"
+              teamBCode="SAU"
+              teamBName="Arabia Saudyjska"
+              resultA={5}
+              resultB={0}
+            />
+          </Cell>
+          <Cell>cell 2</Cell>
+          <Cell>cell 3</Cell>
+          <Cell>cell 4</Cell>
+          <Cell>cell 5</Cell>
+          <Cell>cell 6</Cell>
+          <Cell>cell 1</Cell>
+          <Cell>cell 2</Cell>
+          <Cell>cell 3</Cell>
+          <Cell>cell 4</Cell>
+          <Cell>cell 5</Cell>
+          <Cell>cell 6</Cell>
+          <Cell>cell 1</Cell>
+          <Cell>cell 2</Cell>
+          <Cell>cell 3</Cell>
+          <Cell>cell 4</Cell>
+          <Cell>cell 5</Cell>
+          <Cell>cell 6</Cell>
+        </Row>
+        <Row>
+          <Cell first>
+            <Match
+              date="2018-07-17T00:00:00.000Z"
+              group="A"
+              teamACode="RUS"
+              teamAName="Rosja"
+              teamBCode="SAU"
+              teamBName="Arabia Saudyjska"
+              resultA={5}
+              resultB={0}
+            />
+          </Cell>
+          <Cell>cell 2</Cell>
+          <Cell>cell 3</Cell>
+          <Cell>cell 4</Cell>
+          <Cell>cell 5</Cell>
+          <Cell>cell 6</Cell>
+          <Cell>cell 1</Cell>
+          <Cell>cell 2</Cell>
+          <Cell>cell 3</Cell>
+          <Cell>cell 4</Cell>
+          <Cell>cell 5</Cell>
+          <Cell>cell 6</Cell>
+          <Cell>cell 1</Cell>
+          <Cell>cell 2</Cell>
+          <Cell>cell 3</Cell>
+          <Cell>cell 4</Cell>
+          <Cell>cell 5</Cell>
+          <Cell>cell 6</Cell>
+        </Row>
+        <Row>
+          <Cell first>
+            <Match
+              date="2018-07-17T00:00:00.000Z"
+              group="A"
+              teamACode="RUS"
+              teamAName="Rosja"
+              teamBCode="SAU"
+              teamBName="Arabia Saudyjska"
+              resultA={5}
+              resultB={0}
+            />
+          </Cell>
+          <Cell>cell 2</Cell>
+          <Cell>cell 3</Cell>
+          <Cell>cell 4</Cell>
+          <Cell>cell 5</Cell>
+          <Cell>cell 6</Cell>
+          <Cell>cell 1</Cell>
+          <Cell>cell 2</Cell>
+          <Cell>cell 3</Cell>
+          <Cell>cell 4</Cell>
+          <Cell>cell 5</Cell>
+          <Cell>cell 6</Cell>
+          <Cell>cell 1</Cell>
+          <Cell>cell 2</Cell>
+          <Cell>cell 3</Cell>
+          <Cell>cell 4</Cell>
+          <Cell>cell 5</Cell>
+          <Cell>cell 6</Cell>
+        </Row>
+        <Row>
+          <Cell first>
+            <Match
+              date="2018-07-17T00:00:00.000Z"
+              group="A"
+              teamACode="RUS"
+              teamAName="Rosja"
+              teamBCode="SAU"
+              teamBName="Arabia Saudyjska"
+              resultA={5}
+              resultB={0}
+            />
+          </Cell>
+          <Cell>cell 2</Cell>
+          <Cell>cell 3</Cell>
+          <Cell>cell 4</Cell>
+          <Cell>cell 5</Cell>
+          <Cell>cell 6</Cell>
+          <Cell>cell 1</Cell>
+          <Cell>cell 2</Cell>
+          <Cell>cell 3</Cell>
+          <Cell>cell 4</Cell>
+          <Cell>cell 5</Cell>
+          <Cell>cell 6</Cell>
+          <Cell>cell 1</Cell>
+          <Cell>cell 2</Cell>
+          <Cell>cell 3</Cell>
+          <Cell>cell 4</Cell>
+          <Cell>cell 5</Cell>
+          <Cell>cell 6</Cell>
+        </Row>
+        <Row>
+          <Cell first>
+            <Match
+              date="2018-07-17T00:00:00.000Z"
+              group="A"
+              teamACode="RUS"
+              teamAName="Rosja"
+              teamBCode="SAU"
+              teamBName="Arabia Saudyjska"
+              resultA={5}
+              resultB={0}
+            />
+          </Cell>
+          <Cell>cell 2</Cell>
+          <Cell>cell 3</Cell>
+          <Cell>cell 4</Cell>
+          <Cell>cell 5</Cell>
+          <Cell>cell 6</Cell>
+          <Cell>cell 1</Cell>
+          <Cell>cell 2</Cell>
+          <Cell>cell 3</Cell>
+          <Cell>cell 4</Cell>
+          <Cell>cell 5</Cell>
+          <Cell>cell 6</Cell>
+          <Cell>cell 1</Cell>
+          <Cell>cell 2</Cell>
+          <Cell>cell 3</Cell>
+          <Cell>cell 4</Cell>
+          <Cell>cell 5</Cell>
+          <Cell>cell 6</Cell>
+        </Row>
+        <Row>
+          <Cell first>
+            <Match
+              date="2018-07-17T00:00:00.000Z"
+              group="A"
+              teamACode="RUS"
+              teamAName="Rosja"
+              teamBCode="SAU"
+              teamBName="Arabia Saudyjska"
+              resultA={5}
+              resultB={0}
+            />
+          </Cell>
+          <Cell>cell 2</Cell>
+          <Cell>cell 3</Cell>
+          <Cell>cell 4</Cell>
+          <Cell>cell 5</Cell>
+          <Cell>cell 6</Cell>
+          <Cell>cell 1</Cell>
+          <Cell>cell 2</Cell>
+          <Cell>cell 3</Cell>
+          <Cell>cell 4</Cell>
+          <Cell>cell 5</Cell>
+          <Cell>cell 6</Cell>
+          <Cell>cell 1</Cell>
+          <Cell>cell 2</Cell>
+          <Cell>cell 3</Cell>
+          <Cell>cell 4</Cell>
+          <Cell>cell 5</Cell>
+          <Cell>cell 6</Cell>
+        </Row>
+        <Row>
+          <Cell first>
+            <Match
+              date="2018-07-17T00:00:00.000Z"
+              group="A"
+              teamACode="RUS"
+              teamAName="Rosja"
+              teamBCode="SAU"
+              teamBName="Arabia Saudyjska"
+              resultA={5}
+              resultB={0}
+            />
+          </Cell>
+          <Cell>cell 2</Cell>
+          <Cell>cell 3</Cell>
           <Cell>cell 4</Cell>
           <Cell>cell 5</Cell>
           <Cell>cell 6</Cell>

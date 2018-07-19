@@ -1,11 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Flex } from 'reflexbox'
 
 import { desktop } from '../../config/mediaQueries'
 
-const Wrapper = styled(Flex)`
+const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   width: 100%;
+  height: calc(100vh - 66px);
+  overflow: auto;
 `
 
 const InnerWrapper = styled.div`
@@ -18,7 +22,7 @@ const Contents = styled.div`
 `
 
 const PageContent = ({ children, fullWidth }) => (
-  <Wrapper align="center" column>
+  <Wrapper>
     <InnerWrapper fullWidth={fullWidth}>
       <Contents>{children}</Contents>
     </InnerWrapper>
