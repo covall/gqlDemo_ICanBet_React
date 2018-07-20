@@ -1,8 +1,9 @@
 import React from 'react'
-import ReactFlag from 'react-world-flags'
 import { format } from 'date-fns'
 import styled from 'styled-components'
 import { withMedia } from 'react-media-query-hoc'
+
+import Flag from '../Flag'
 
 const Match = withMedia(
   ({
@@ -30,10 +31,9 @@ const Match = withMedia(
 
         <MatchDetails>
           <Team large={sizeLarge} left>
-            <Flag
+            <FlagStyled
               code={teamACode}
               teamName={teamAName}
-              fallback={teamACode}
               large={sizeLarge}
               left
             />
@@ -55,10 +55,9 @@ const Match = withMedia(
           <Team large={sizeLarge} right>
             {sizeLarge && <TeamName right>{teamBName}</TeamName>}
 
-            <Flag
+            <FlagStyled
               code={teamBCode}
               teamName={teamBName}
-              fallback={teamBCode}
               large={sizeLarge}
               right
             />
@@ -77,21 +76,14 @@ const Team = styled.div`
   justify-content: ${props => props.right && 'flex-end'};
 `
 
-const Flag = styled(({ className, code, large, teamName }) => (
-  <div className={className}>
-    <ReactFlag
-      code={code}
-      fallback={code}
-      title={teamName}
-      height={large ? 64 : 32}
-    />
-  </div>
+const FlagStyled = styled(({ className, code, large, teamName }) => (
+  <Flag
+    className={className}
+    code={code}
+    title={teamName}
+    height={large ? 64 : 32}
+  />
 ))`
-  flex-shrink: 0;
-  display: flex;
-  justify-content: center;
-  overflow: hidden;
-  width: ${props => (props.large ? '96px' : '38px')};
   box-shadow: ${props => props.left && '1px 0px 1px #c0c0c0'};
   box-shadow: ${props => props.right && '-1px 0px 1px #c0c0c0'};
 `
@@ -115,8 +107,8 @@ const MatchDetails = styled.div`
 
 const TeamName = styled.div`
   font-size: 18px;
-  margin-left: ${props => props.left ? 30 : 0}px;
-  margin-right: ${props => props.right ? 30 : 0}px;
+  margin-left: ${props => (props.left ? 30 : 0)}px;
+  margin-right: ${props => (props.right ? 30 : 0)}px;
   text-align: ${props => props.left && 'left'};
   text-align: ${props => props.right && 'right'};
 `
@@ -127,7 +119,7 @@ const ResultDetails = styled.div`
   flex-direction: column;
   align-items: center;
   position: relative;
-  margin: 0 ${props => props.large ? 30 : 8}px;
+  margin: 0 ${props => (props.large ? 30 : 8)}px;
 `
 
 const Result = styled.div`
