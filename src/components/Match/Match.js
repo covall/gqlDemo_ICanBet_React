@@ -41,7 +41,7 @@ const Match = withMedia(
             {sizeLarge && <TeamName left>{teamAName}</TeamName>}
           </Team>
 
-          <ResultDetails>
+          <ResultDetails large={sizeLarge}>
             <Result large={sizeLarge}>
               {resultA} : {resultB}{' '}
               {resultPenaltyA &&
@@ -115,7 +115,8 @@ const MatchDetails = styled.div`
 
 const TeamName = styled.div`
   font-size: 18px;
-  margin: 0 30px;
+  margin-left: ${props => props.left ? 30 : 0}px;
+  margin-right: ${props => props.right ? 30 : 0}px;
   text-align: ${props => props.left && 'left'};
   text-align: ${props => props.right && 'right'};
 `
@@ -126,6 +127,7 @@ const ResultDetails = styled.div`
   flex-direction: column;
   align-items: center;
   position: relative;
+  margin: 0 ${props => props.large ? 30 : 8}px;
 `
 
 const Result = styled.div`

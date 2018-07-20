@@ -5,8 +5,7 @@ import { desktop } from '../../config/mediaQueries'
 
 const Wrapper = styled.div`
   display: flex;
-  align-items: center;
-  flex-direction: column;
+  justify-content: center;
   width: 100%;
   height: calc(100vh - 66px);
   overflow: auto;
@@ -14,11 +13,13 @@ const Wrapper = styled.div`
 
 const InnerWrapper = styled.div`
   width: 100%;
+  height: 100%;
   max-width: ${props => !props.fullWidth && `${desktop.min}px`};
 `
 
 const Contents = styled.div`
   padding: 0 20px;
+  height: 100%;
 `
 
 const PageContent = ({ children, fullWidth }) => (
