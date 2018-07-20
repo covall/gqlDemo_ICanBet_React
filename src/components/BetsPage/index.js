@@ -1,1 +1,1 @@
-export { default } from './BetsPage'
+export { default } from './BetsPageConnected'

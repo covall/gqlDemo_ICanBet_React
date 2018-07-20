@@ -16,6 +16,7 @@ const Match = withMedia(
     teamAName,
     teamBCode,
     teamBName,
+    phase,
     resultA,
     resultB,
     resultPenaltyA,
@@ -49,7 +50,7 @@ const Match = withMedia(
                 `(${resultPenaltyA} : ${resultPenaltyB})`}
             </Result>
 
-            {sizeLarge && <Group>Grupa {group}</Group>}
+            {sizeLarge && <Phase>{phase} {phase === 'Grupa' && group}</Phase>}
           </ResultDetails>
 
           <Team large={sizeLarge} right>
@@ -127,12 +128,13 @@ const Result = styled.div`
   font-size: ${props => (props.large ? '28px' : '14px')};
 `
 
-const Group = styled.div`
+const Phase = styled.div`
   position: absolute;
   margin-top: 3px;
   top: 100%;
   font-size: 10px;
   opacity: 0.3;
+  white-space: nowrap;
 `
 
 const MatchContainer = styled.div`

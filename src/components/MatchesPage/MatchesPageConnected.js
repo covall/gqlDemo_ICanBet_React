@@ -35,8 +35,6 @@ const MatchesPageConnectedToGQL = () => (
       if (loading) return <div>Ładuję</div>
       if (error) return <div>Error :(</div>
 
-      console.log('data', data)
-
       return <MatchesPage data={data.games || []} />
     }}
   </Query>

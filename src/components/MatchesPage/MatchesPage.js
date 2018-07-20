@@ -13,6 +13,7 @@ const MatchesPage = ({ data }) => (
           <Match
             key={`match-${element.id}`}
             date={element.date}
+            phase={element.phase}
             group={element.teamA.group}
             teamACode={element.teamA.code}
             teamAName={element.teamA.name}
