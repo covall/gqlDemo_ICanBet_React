@@ -9,7 +9,7 @@ import Match from '../Match'
 import TotalResult from '../TotalResult'
 import BetWithScore from '../BetWithScore'
 
-const BetsPage = ({ gamblers }) => (
+const BetsPage = ({ gamblers, games }) => (
   <PageTitle title="Zakłady">
     <PageContent fullWidth>
       <StickyTable>
@@ -23,23 +23,27 @@ const BetsPage = ({ gamblers }) => (
           ))}
         </Row>
 
-        {/* BETS */}
-        {Array(30).fill(null).map(() => (
-          <Row>
+        {/* GAMES - bo wierszy jest DOKŁADNIE tyle ile gier a nie zakładów */}
+        {games.map(game => (
+          <Row key={`game-${game.id}`}>
             <Cell first>
               <Match
-                date="2018-07-17T00:00:00.000Z"
-                group="A"
-                teamACode="RUS"
-                teamAName="Rosja"
-                teamBCode="SAU"
-                teamBName="Arabia Saudyjska"
-                resultA={5}
-                resultB={0}
+                date={game.date}
+                phase={game.phase}
+                group={game.teamA.group}
+                teamACode={game.teamA.code}
+                teamAName={game.teamA.name}
+                teamBCode={game.teamB.code}
+                teamBName={game.teamB.name}
+                resultA={game.result.a}
+                resultB={game.result.b}
+                resultPenaltyA={game.result.aPenalties}
+                resultPenaltyB={game.result.bPenalties}
               />
             </Cell>
             {gamblers.map(() => (
               <Cell>
+                {/* dany BET dla game.id oraz gamblers[index].id - to anypattern by w każdej iteracji wyciągać dany rekord */}
                 <BetWithScore resultA={2} resultB={1} score={4} />
               </Cell>
             ))}

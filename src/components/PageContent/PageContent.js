@@ -3,6 +3,14 @@ import styled from 'styled-components'
 
 import { desktop } from '../../config/mediaQueries'
 
+const PageContent = ({ children, fullWidth }) => (
+  <Wrapper>
+    <InnerWrapper fullWidth={fullWidth}>
+      <Contents>{children}</Contents>
+    </InnerWrapper>
+  </Wrapper>
+)
+
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -21,13 +29,5 @@ const Contents = styled.div`
   padding: 0 20px;
   height: 100%;
 `
-
-const PageContent = ({ children, fullWidth }) => (
-  <Wrapper>
-    <InnerWrapper fullWidth={fullWidth}>
-      <Contents>{children}</Contents>
-    </InnerWrapper>
-  </Wrapper>
-)
 
 export default PageContent

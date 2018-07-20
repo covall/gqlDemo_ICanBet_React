@@ -8,6 +8,26 @@ const BetsPageConnectedToGQL = () => (
   <Query
     query={gql`
       {
+        games {
+          id
+          phase
+          date
+          teamA {
+            code
+            name
+            group
+          }
+          teamB {
+            code
+            name
+          }
+          result {
+            a
+            b
+            aPenalties
+            bPenalties
+          }
+        }
         gamblers {
           id
           name
@@ -41,7 +61,9 @@ const BetsPageConnectedToGQL = () => (
       if (loading) return <div>Ładuję</div>
       if (error) return <div>Error :(</div>
 
-      return <BetsPage gamblers={data.gamblers || []} />
+      return (
+        <BetsPage gamblers={data.gamblers || []} games={data.games || []} />
+      )
     }}
   </Query>
 )
