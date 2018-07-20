@@ -1,11 +1,14 @@
 import React from 'react'
 import { Query } from 'react-apollo'
+import gql from 'graphql-tag'
+
+import MatchesPage from './MatchesPage'
 
 const MatchesPageConnectedToGQL = () => (
   <Query
     query={gql`
       {
-        allGames {
+        games {
           id
           phase
           date
@@ -29,28 +32,14 @@ const MatchesPageConnectedToGQL = () => (
     `}
   >
     {({ loading, error, data }) => {
-      // TODO: wyświetlić dane
-      //
-      // if (loading) return <div>Ładuję</div>
-      // if (error) return <div>Error :(</div>
-      //
-      // const graphData = {
-      //   games: data.allGames,
-      //   playerPoints: data.allGamblers.map(gambler => {
-      //     const pointsArray = Array(data.allGames.length).fill(0)
-      //     gambler.bets.forEach(bet => {
-      //       pointsArray[bet.game.id - 1] = bet.score
-      //     })
-      //     return {
-      //       name: gambler.id,
-      //       points: pointsArray
-      //     }
-      //   })
-      // }
-      //
-      // const dataCumulative = getCumulativePoints(graphData)
-      //
-      // return <ResultsPage data={dataCumulative} />
+      if (loading) return <div>Ładuję</div>
+      if (error) return <div>Error :(</div>
+
+      console.log('data', data)
+
+      return <MatchesPage data={data.games || []} />
     }}
   </Query>
 )
+
+export default MatchesPageConnectedToGQL

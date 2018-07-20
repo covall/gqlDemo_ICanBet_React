@@ -62,7 +62,7 @@ const config = graphData => {
         }
       }
     },
-    series: graphData.playerPoints.map(pp => {
+    series: graphData.gamblerPoints.map(pp => {
       return {
         // OY lewa
         name: pp.name,
