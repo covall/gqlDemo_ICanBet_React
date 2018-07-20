@@ -15,71 +15,71 @@ const BetsPage = () => (
         <Row>
           <HeadCell first />
           <HeadCell>
-            <PlayerName>Kosa</PlayerName>
+            <GamblerName>Kosa</GamblerName>
             <TotalResult place={12} score={34} />
           </HeadCell>
           <HeadCell>
-            <PlayerName>Michał K.</PlayerName>
+            <GamblerName>Michał K.</GamblerName>
             <TotalResult place={12} score={34} />
           </HeadCell>
           <HeadCell>
-            <PlayerName>Arek G.</PlayerName>
+            <GamblerName>Arek G.</GamblerName>
             <TotalResult place={12} score={34} />
           </HeadCell>
           <HeadCell>
-            <PlayerName>Kalbar</PlayerName>
+            <GamblerName>Kalbar</GamblerName>
             <TotalResult place={12} score={34} />
           </HeadCell>
           <HeadCell>
-            <PlayerName>Wujek Gaweł</PlayerName>
+            <GamblerName>Wujek Gaweł</GamblerName>
             <TotalResult place={12} score={34} />
           </HeadCell>
           <HeadCell>
-            <PlayerName>Konrad K.</PlayerName>
+            <GamblerName>Konrad K.</GamblerName>
             <TotalResult place={12} score={34} />
           </HeadCell>
           <HeadCell>
-            <PlayerName>Kosa</PlayerName>
+            <GamblerName>Kosa</GamblerName>
             <TotalResult place={12} score={34} />
           </HeadCell>
           <HeadCell>
-            <PlayerName>Michał K.</PlayerName>
+            <GamblerName>Michał K.</GamblerName>
             <TotalResult place={12} score={34} />
           </HeadCell>
           <HeadCell>
-            <PlayerName>Arek G.</PlayerName>
+            <GamblerName>Arek G.</GamblerName>
             <TotalResult place={12} score={34} />
           </HeadCell>
           <HeadCell>
-            <PlayerName>Kalbar</PlayerName>
+            <GamblerName>Kalbar</GamblerName>
             <TotalResult place={12} score={34} />
           </HeadCell>
           <HeadCell>
-            <PlayerName>Wujek Gaweł</PlayerName>
+            <GamblerName>Wujek Gaweł</GamblerName>
             <TotalResult place={12} score={34} />
           </HeadCell>
           <HeadCell>
-            <PlayerName>Konrad K.</PlayerName>
+            <GamblerName>Konrad K.</GamblerName>
             <TotalResult place={12} score={34} />
           </HeadCell>
           <HeadCell>
-            <PlayerName>Kosa</PlayerName>
+            <GamblerName>Kosa</GamblerName>
             <TotalResult place={12} score={34} />
           </HeadCell>
           <HeadCell>
-            <PlayerName>Michał K.</PlayerName>
+            <GamblerName>Michał K.</GamblerName>
             <TotalResult place={12} score={34} />
           </HeadCell>
           <HeadCell>
-            <PlayerName>Arek G.</PlayerName>
+            <GamblerName>Arek G.</GamblerName>
             <TotalResult place={12} score={34} />
           </HeadCell>
           <HeadCell>
-            <PlayerName>Kalbar</PlayerName>
+            <GamblerName>Kalbar</GamblerName>
             <TotalResult place={12} score={34} />
           </HeadCell>
           <HeadCell>
-            <PlayerName>Wujek Gaweł</PlayerName>
+            <GamblerName>Wujek Gaweł</GamblerName>
             <TotalResult place={12} score={34} />
           </HeadCell>
         </Row>
@@ -562,7 +562,9 @@ const BetsPage = () => (
   </PageTitle>
 )
 
-const Cell = styled(StickyTableCell)`
+const Cell = styled(({ children, className }) => (
+  <StickyTableCell className={className}>{children}</StickyTableCell>
+))`
   text-align: center;
   padding-left: 20px;
   padding-right: ${props => (props.first ? '135px' : '20px')};
@@ -574,7 +576,7 @@ const HeadCell = styled(Cell)`
   padding-bottom: 30px;
 `
 
-const PlayerName = styled.div`
+const GamblerName = styled.div`
   font-size: 20px;
   margin-bottom: 13px;
 `

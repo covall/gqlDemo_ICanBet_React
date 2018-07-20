@@ -1,1 +1,1 @@
-export { default } from './MatchesPage'
+export { default } from './MatchesPageConnected'
