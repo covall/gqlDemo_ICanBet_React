@@ -47,7 +47,7 @@ const ResultsPageConnectedToGQL = () => (
 
       const graphData = {
         games: data.games,
-        playerPoints: data.gamblers.map(gambler => {
+        gamblerPoints: data.gamblers.map(gambler => {
           const pointsArray = Array(data.games.length).fill(0)
           gambler.bets.forEach(bet => {
             pointsArray[bet.game.id - 1] = bet.points
