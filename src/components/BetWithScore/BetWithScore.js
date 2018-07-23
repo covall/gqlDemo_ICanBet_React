@@ -1,21 +1,19 @@
 import React from 'react'
-import styled from 'styled-components'
 import { Flex, Box } from 'reflexbox'
 
+import BetResult from './BetResult'
 import Score from '../Score'
 
-const BetWithScore = ({ resultA, resultB, penaltyWinner, score }) => (
+const BetWithScore = ({ game, resultA, resultB, penaltyWinner, score }) => (
   <Flex justify="space-between" align="center">
-    <Result>
-      {resultA} : {resultB}
-      {penaltyWinner && ` (${penaltyWinner})`}
-    </Result>
+    <Box>
+      <BetResult game={game}>
+        {resultA} : {resultB}
+        {penaltyWinner && ` (${penaltyWinner})`}
+      </BetResult>
+    </Box>
     {score && <Score>{score}</Score>}
   </Flex>
 )
-
-const Result = styled(Box)`
-  font-size: 16px;
-`
 
 export default BetWithScore

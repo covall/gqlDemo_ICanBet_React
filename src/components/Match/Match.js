@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { format } from 'date-fns'
 import styled from 'styled-components'
 import { withMedia } from 'react-media-query-hoc'
@@ -46,11 +46,18 @@ const Match = withMedia(
             <Result large={sizeLarge}>
               {resultA} : {resultB}{' '}
               {resultPenaltyA &&
-                resultPenaltyB &&
-                `(${resultPenaltyA} : ${resultPenaltyB})`}
+                resultPenaltyB && (
+                  <Fragment>
+                    ({resultPenaltyA} : {resultPenaltyB})
+                  </Fragment>
+                )}
             </Result>
 
-            {sizeLarge && <Phase>{phase} {phase === 'Grupa' && group}</Phase>}
+            {sizeLarge && (
+              <Phase>
+                {phase} {phase === 'Grupa' && group}
+              </Phase>
+            )}
           </ResultDetails>
 
           <Team large={sizeLarge} right>

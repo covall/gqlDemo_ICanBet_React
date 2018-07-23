@@ -41,10 +41,10 @@ const BetsPage = ({ gamblers, games }) => (
                 resultPenaltyB={game.result.bPenalties}
               />
             </Cell>
-            {gamblers.map(() => (
-              <Cell>
+            {gamblers.map((gambler, index) => (
+              <Cell key={`bet-${index}`}>
                 {/* dany BET dla game.id oraz gamblers[index].id - to anypattern by w każdej iteracji wyciągać dany rekord */}
-                <BetWithScore resultA={2} resultB={1} score={4} />
+                <BetWithScore resultA={2} resultB={1} score={4} game={game} />
               </Cell>
             ))}
           </Row>
