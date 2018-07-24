@@ -15,7 +15,6 @@ const BetsPageConnectedToGQL = () => (
           teamA {
             code
             name
-            group
           }
           teamB {
             code
@@ -27,22 +26,9 @@ const BetsPageConnectedToGQL = () => (
             aPenalties
             bPenalties
           }
-        }
-        gamblers {
-          id
-          name
           bets {
-            game {
+            gambler {
               id
-              date
-              teamA {
-                code
-                name
-              }
-              teamB {
-                code
-                name
-              }
             }
             betNumbers {
               a
@@ -51,6 +37,10 @@ const BetsPageConnectedToGQL = () => (
             }
             points
           }
+        }
+        gamblers {
+          id
+          name
           points
           place
         }

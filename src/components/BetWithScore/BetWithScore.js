@@ -4,16 +4,15 @@ import { Flex, Box } from 'reflexbox'
 import BetResult from './BetResult'
 import Score from '../Score'
 
-const BetWithScore = ({ game, resultA, resultB, penaltyWinner, score }) => (
-  <Flex justify="space-between" align="center">
-    <Box>
-      <BetResult game={game}>
-        {resultA} : {resultB}
-        {penaltyWinner && ` (${penaltyWinner})`}
-      </BetResult>
-    </Box>
-    {score && <Score>{score}</Score>}
-  </Flex>
-)
+const BetWithScore = ({ bet, game }) => {
+  return (
+    <Flex justify="space-between" align="center">
+      <Box>
+        <BetResult game={game} bet={bet} />
+      </Box>
+      {bet.points !== null && <Score>{bet.points}</Score>}
+    </Flex>
+  )
+}
 
 export default BetWithScore

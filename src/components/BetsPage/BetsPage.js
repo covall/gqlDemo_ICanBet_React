@@ -41,12 +41,16 @@ const BetsPage = ({ gamblers, games }) => (
                 resultPenaltyB={game.result.bPenalties}
               />
             </Cell>
-            {gamblers.map((gambler, index) => (
-              <Cell key={`bet-${index}`}>
-                {/* dany BET dla game.id oraz gamblers[index].id - to anypattern by w każdej iteracji wyciągać dany rekord */}
-                <BetWithScore resultA={2} resultB={1} score={4} game={game} />
-              </Cell>
-            ))}
+            {gamblers.map(gambler => {
+              const gamblerId = gambler.id
+              const bet = game.bets.find(bet => bet.gambler.id === gamblerId)
+
+              return (
+                <Cell key={`bet-${gambler.id}-${game.id}`}>
+                  <BetWithScore game={game} bet={bet} />
+                </Cell>
+              )
+            })}
           </Row>
         ))}
       </StickyTable>

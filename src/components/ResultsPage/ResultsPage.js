@@ -5,10 +5,11 @@ import gql from 'graphql-tag'
 
 import PageTitle from '../PageTitle'
 import PageContent from '../PageContent'
-import graphConfig from './graph'
+import chartConfig from './chart'
 
 const ResultsPage = ({ data }) => {
-  const config = graphConfig(data)
+  const config = chartConfig(data)
+
   return (
     <PageTitle title="Wyniki">
       <PageContent>
@@ -45,7 +46,7 @@ const ResultsPageConnectedToGQL = () => (
       if (loading) return <div>Ładuję</div>
       if (error) return <div>Error :(</div>
 
-      const graphData = {
+      const chartData = {
         games: data.games,
         gamblerPoints: data.gamblers.map(gambler => {
           const pointsArray = Array(data.games.length).fill(0)
@@ -59,7 +60,7 @@ const ResultsPageConnectedToGQL = () => (
         })
       }
 
-      const dataCumulative = getCumulativePoints(graphData)
+      const dataCumulative = getCumulativePoints(chartData)
 
       return <ResultsPage data={dataCumulative} />
     }}

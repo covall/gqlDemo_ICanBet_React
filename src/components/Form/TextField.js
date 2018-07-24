@@ -4,7 +4,7 @@ import styled from 'styled-components'
 class TextField extends Component {
   render() {
     const { name, ...rest } = this.props
-    return <TextInput type="number" name={name} {...rest} />
+    return <TextInput type="text" name={name} {...rest} />
   }
 }
 
