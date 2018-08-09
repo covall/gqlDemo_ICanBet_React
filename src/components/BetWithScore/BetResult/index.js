@@ -1,1 +1,1 @@
-export { default } from './BetResultConnected'
+export { default } from './BetResult'

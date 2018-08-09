@@ -2,10 +2,10 @@ import React from 'react'
 import { Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
 
-import BetResult from './BetResult'
+import BetResultEditForm from './BetResultEditForm'
 
 const MAKE_BET = gql`
-  mutation ($bet: BetInput!, $gamblerId: ID!, $gameId: ID!) {
+  mutation($bet: BetInput!, $gamblerId: ID!, $gameId: ID!) {
     makeBet(betInput: $bet, gameId: $gameId, gamblerId: $gamblerId) {
       betNumbers {
         a
@@ -17,10 +17,10 @@ const MAKE_BET = gql`
   }
 `
 
-const BetResultConnectedToGQL = props => (
+const BetResultEditFormConnectedToGQL = props => (
   <Mutation mutation={MAKE_BET}>
-    {(makeBet, { data }) => <BetResult {...props} makeBet={makeBet} />}
+    {(makeBet, { data }) => <BetResultEditForm {...props} makeBet={makeBet} />}
   </Mutation>
 )
 
-export default BetResultConnectedToGQL
+export default BetResultEditFormConnectedToGQL

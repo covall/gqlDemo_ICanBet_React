@@ -62,9 +62,12 @@ const Cell = styled(({ children, className }) => (
   <StickyTableCell className={className}>{children}</StickyTableCell>
 ))`
   text-align: center;
-  padding-left: 20px;
   padding-right: ${props => (props.first ? '135px' : '20px')};
+  padding-left: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   border-right: 1px solid #979797;
+  vertical-align: middle;
 `
 
 const HeadCell = styled(Cell)`
