@@ -56,6 +56,6 @@ export default styled(BetResult)`
 
   &:hover {
     cursor: pointer;
-    transform: scale(1.5);
+    transform: scale(1.3);
   }
 `

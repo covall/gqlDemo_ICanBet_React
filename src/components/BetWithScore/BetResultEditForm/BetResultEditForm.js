@@ -100,12 +100,12 @@ class BetResultEditForm extends Component {
 }
 
 const SaveContainer = styled(Flex)`
-  margin: 10px 0;
+  margin: 20px 0;
 `
 
 const WinInPenaltiesContainer = styled(Flex)`
   position: absolute;
-  margin: 10px 0;
+  margin: 20px 0;
 `
 
 const WinInPenaltiesText = styled(Flex)`
