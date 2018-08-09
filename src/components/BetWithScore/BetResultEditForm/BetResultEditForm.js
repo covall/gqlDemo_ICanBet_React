@@ -3,6 +3,7 @@ import { Flex } from 'reflexbox'
 import getFormData from 'get-form-data'
 import styled from 'styled-components'
 
+import { success } from '../../../utils/toast'
 import { Button, TextField } from '../../Form'
 import Match from '../../Match'
 
@@ -55,6 +56,8 @@ class BetResultEditForm extends Component {
           makeBet({ variables })
 
           onComplete()
+
+          success('WOW! Udało Ci się obstawić wynik.')
         }}
       >
         <Match

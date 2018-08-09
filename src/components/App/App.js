@@ -3,6 +3,7 @@ import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
 import { MediaQueryProvider } from 'react-media-query-hoc'
 import ApolloClient from 'apollo-boost'
 import { ApolloProvider } from 'react-apollo'
+import { ToastContainer } from 'react-toastify'
 
 import mediaQueries from '../../config/mediaQueries'
 import Menu from '../Menu'
@@ -32,6 +33,8 @@ const App = () => (
             <Route path="/bets" render={() => <BetsPage />} />
             <Route path="/results" render={() => <ResultsPage />} />
           </Switch>
+
+          <ToastContainer />
         </Fragment>
       </BrowserRouter>
     </MediaQueryProvider>

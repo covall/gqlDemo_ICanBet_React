@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { Flex } from 'reflexbox'
 import styled from 'styled-components'
 
-import { Button, TextField } from '../../../Form/index'
-import Match from '../../../Match/index'
+import { Button, TextField } from '../../../Form'
+import Match from '../../../Match'
 
 class MatchEditForm extends Component {
   onResultAChange(e) {
