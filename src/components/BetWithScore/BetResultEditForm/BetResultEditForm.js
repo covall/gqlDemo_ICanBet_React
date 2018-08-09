@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Flex, Box } from 'reflexbox'
+import { Flex } from 'reflexbox'
 import getFormData from 'get-form-data'
 import styled from 'styled-components'
 
@@ -49,7 +49,7 @@ class BetResultEditForm extends Component {
           }
 
           if (formData.winInPenalties) {
-            variables.winInPenalties = formData.winInPenalties
+            variables.bet.winInPenalties = formData.winInPenalties
           }
 
           makeBet({ variables })
