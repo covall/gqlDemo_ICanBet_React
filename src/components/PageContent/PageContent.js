@@ -28,6 +28,7 @@ const InnerWrapper = styled.div`
 const Contents = styled.div`
   padding: 0 20px;
   height: 100%;
+  position: relative;
 `
 
 export default PageContent

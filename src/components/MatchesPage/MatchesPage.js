@@ -1,8 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
+import loader from 'hoc-react-loader'
 
 import PageTitle from '../PageTitle'
 import PageContent from '../PageContent'
+import Spinner from '../Spinner'
 import MatchElement from './MatchElement'
 
 const MatchesPage = ({ data }) => (
@@ -21,4 +23,8 @@ const MatchesContainer = styled.div`
   padding: 80px 0;
 `
 
-export default MatchesPage
+export default loader({
+  LoadingIndicator: Spinner,
+  print: props => props.data.length,
+  delay: 200
+})(MatchesPage)
