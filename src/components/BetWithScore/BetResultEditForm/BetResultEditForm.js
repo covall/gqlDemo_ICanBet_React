@@ -3,7 +3,6 @@ import { Flex } from 'reflexbox'
 import getFormData from 'get-form-data'
 import styled from 'styled-components'
 
-import { success } from '../../../utils/toast'
 import { Button, TextField } from '../../Form'
 import Match from '../../Match'
 
@@ -32,6 +31,7 @@ class BetResultEditForm extends Component {
   render() {
     const { bet, game, makeBet, onComplete } = this.props
     const { resultA, resultB } = this.state
+    const groupPhase = game.phase === 'Grupa'
 
     return (
       <form
@@ -40,24 +40,16 @@ class BetResultEditForm extends Component {
           e.preventDefault()
 
           const formData = getFormData(e.currentTarget)
-          let variables = {
-            bet: {
-              a: formData.resultA,
-              b: formData.resultB
-            },
-            gameId: game.id,
-            gamblerId: bet.gambler.id
+          const betNumbers = {
+            a: formData.resultA,
+            b: formData.resultB,
+            winInPenalties: formData.winInPenalties || null
           }
 
-          if (formData.winInPenalties) {
-            variables.bet.winInPenalties = formData.winInPenalties
-          }
+          makeBet(game.id, bet.gambler.id, betNumbers)
 
-          makeBet({ variables })
-
+          // TODO: consider move it to onCompleted callback
           onComplete()
-
-          success('WOW! Udało Ci się obstawić wynik.')
         }}
       >
         <Match
@@ -84,7 +76,7 @@ class BetResultEditForm extends Component {
           }
         />
 
-        {resultA === resultB && (
+        {resultA === resultB && !groupPhase && (
           <WinInPenaltiesContainer align="center">
             <WinInPenaltiesText>Wygrany w rzutach karnych:</WinInPenaltiesText>
             <TextField

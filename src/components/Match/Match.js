@@ -53,11 +53,9 @@ const Match = withMedia(
                 )}
             </Result>
 
-            {sizeLarge && (
-              <Phase>
-                {phase} {phase === 'Grupa' && group}
-              </Phase>
-            )}
+            <Phase large={sizeLarge}>
+              {phase} {phase === 'Grupa' && group}
+            </Phase>
           </ResultDetails>
 
           <Team large={sizeLarge} right>
@@ -94,6 +92,10 @@ const FlagStyled = styled(({ className, code, large, teamName }) => (
 ))`
   box-shadow: ${props => props.left && '1px 0px 1px #c0c0c0'};
   box-shadow: ${props => props.right && '-1px 0px 1px #c0c0c0'};
+  border-top-left-radius: ${props => props.left && '5px'};
+  border-bottom-left-radius: ${props => props.left && '5px'};
+  border-top-right-radius: ${props => props.right && '5px'};
+  border-bottom-right-radius: ${props => props.right && '5px'};
 `
 
 const MatchDate = styled.div`
@@ -110,7 +112,6 @@ const MatchDetails = styled.div`
   flex: 1 1 auto;
   border: 1px solid #d7d7d7;
   border-radius: 5px;
-  overflow: hidden;
 `
 
 const TeamName = styled.div`
@@ -137,7 +138,7 @@ const Result = styled.div`
 
 const Phase = styled.div`
   position: absolute;
-  margin-top: 3px;
+  margin-top: ${props => (props.large ? 3 : 13)}px;
   top: 100%;
   font-size: 10px;
   opacity: 0.3;

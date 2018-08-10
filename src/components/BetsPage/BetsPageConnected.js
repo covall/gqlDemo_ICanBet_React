@@ -4,49 +4,49 @@ import gql from 'graphql-tag'
 
 import BetsPage from './BetsPage'
 
-const BetsPageConnectedToGQL = () => (
-  <Query
-    query={gql`
-      {
-        games {
-          id
-          phase
-          date
-          teamA {
-            code
-            name
-          }
-          teamB {
-            code
-            name
-          }
-          result {
-            a
-            b
-            aPenalties
-            bPenalties
-          }
-          bets {
-            gambler {
-              id
-            }
-            betNumbers {
-              a
-              b
-              winInPenalties
-            }
-            points
-          }
-        }
-        gamblers {
-          id
-          name
-          points
-          place
-        }
+const BETS_QUERY = gql`
+  {
+    games {
+      id
+      phase
+      date
+      teamA {
+        code
+        name
       }
-    `}
-  >
+      teamB {
+        code
+        name
+      }
+      result {
+        a
+        b
+        aPenalties
+        bPenalties
+      }
+      bets {
+        gambler {
+          id
+        }
+        betNumbers {
+          a
+          b
+          winInPenalties
+        }
+        points
+      }
+    }
+    gamblers {
+      id
+      name
+      points
+      place
+    }
+  }
+`
+
+const BetsPageConnectedToGQL = () => (
+  <Query query={BETS_QUERY}>
     {({ loading, error, data }) => {
       if (loading) return <div>Ładuję</div>
       if (error) return <div>Error :(</div>
@@ -59,3 +59,4 @@ const BetsPageConnectedToGQL = () => (
 )
 
 export default BetsPageConnectedToGQL
+export { BETS_QUERY }

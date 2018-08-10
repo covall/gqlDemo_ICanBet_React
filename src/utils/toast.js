@@ -8,8 +8,8 @@ const options = {
   pauseOnHover: true
 }
 
-const success = message => toast.success(`🚀 ${message}`, options)
-const warn = message => toast.warn(`☢️️ ${message}`, options)
-const error = message => toast.error(`💩 ${message}`, options)
+const showSuccess = message => toast.success(`🚀 ${message}`, options)
+const showWarn = message => toast.warn(`☢️️ ${message}`, options)
+const showError = message => toast.error(`💩 ${message}`, options)
 
-export { success, warn, error }
+export { showSuccess, showWarn, showError }

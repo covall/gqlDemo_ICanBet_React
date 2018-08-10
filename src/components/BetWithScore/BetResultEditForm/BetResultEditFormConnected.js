@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
 
 import BetResultEditForm from './BetResultEditForm'
+import { BETS_QUERY } from '../../BetsPage'
+import { showError, showSuccess } from '../../../utils/toast'
 
 const MAKE_BET = gql`
-  mutation($bet: BetInput!, $gamblerId: ID!, $gameId: ID!) {
-    makeBet(betInput: $bet, gameId: $gameId, gamblerId: $gamblerId) {
+  mutation MakeBet($betNumbers: BetInput!, $gamblerId: ID!, $gameId: ID!) {
+    makeBet(betInput: $betNumbers, gameId: $gameId, gamblerId: $gamblerId) {
       betNumbers {
         a
         b
@@ -18,8 +20,24 @@ const MAKE_BET = gql`
 `
 
 const BetResultEditFormConnectedToGQL = props => (
-  <Mutation mutation={MAKE_BET}>
-    {(makeBet, { data }) => <BetResultEditForm {...props} makeBet={makeBet} />}
+  <Mutation
+    mutation={MAKE_BET}
+    onError={() => showError('Ups, coś poszło nie tak!')}
+    onCompleted={() => showSuccess('WOW! Udało Ci się obstawić wynik.')}
+  >
+    {mutate => (
+      <Fragment>
+        <BetResultEditForm
+          {...props}
+          makeBet={(gameId, gamblerId, betNumbers) => {
+            mutate({
+              variables: { gameId, gamblerId, betNumbers },
+              refetchQueries: [{ query: BETS_QUERY }]
+            })
+          }}
+        />
+      </Fragment>
+    )}
   </Mutation>
 )
 
