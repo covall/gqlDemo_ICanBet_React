@@ -2,26 +2,46 @@ import React from 'react'
 import { Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
 
+import getErrorMessages from '../../../../utils/getErrorMessages'
+import { showError, showSuccess } from '../../../../utils/toast'
+import { MATCHES_QUERY } from '../../../MatchesPage'
+import { BETS_QUERY } from '../../../BetsPage'
 import MatchEditForm from './MatchEditForm'
 
-// TODO: change according to server mutation
-const EDIT_MATCH = gql`
-  mutation($bet: BetInput!, $gamblerId: ID!, $gameId: ID!) {
-    makeBet(betInput: $bet, gameId: $gameId, gamblerId: $gamblerId) {
-      betNumbers {
+const EDIT_GAME_RESULT = gql`
+  mutation EditGameResult($result: GameResultInput!, $id: ID!) {
+    editGameResult(resultInput: $result, id: $id) {
+      result {
         a
         b
-        winInPenalties
+        aPenalties
+        bPenalties
       }
-      points
     }
   }
 `
 
 const MatchEditFormConnectedToGQL = props => (
-  <Mutation mutation={EDIT_MATCH}>
-    {(editMatch, { data }) => (
-      <MatchEditForm {...props} editMatch={editMatch} />
+  <Mutation
+    mutation={EDIT_GAME_RESULT}
+    onError={error => {
+      const messages = getErrorMessages(error)
+      const genericMessage = 'Ups, coś poszło nie tak!'
+
+      showError(messages || genericMessage)
+    }}
+    onCompleted={() => showSuccess('Zmodyfikowałeś wynik gry.')}
+  >
+    {mutate => (
+      <MatchEditForm
+        {...props}
+        editMatch={(id, result) => {
+          mutate({
+            variables: { id, result },
+            refetchQueries: [{ query: MATCHES_QUERY }, { query: BETS_QUERY }]
+          })
+        }}
+      />
     )}
   </Mutation>
 )

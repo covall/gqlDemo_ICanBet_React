@@ -4,33 +4,33 @@ import gql from 'graphql-tag'
 
 import MatchesPage from './MatchesPage'
 
-const MatchesPageConnectedToGQL = () => (
-  <Query
-    query={gql`
-      {
-        games {
-          id
-          phase
-          date
-          teamA {
-            code
-            name
-            group
-          }
-          teamB {
-            code
-            name
-          }
-          result {
-            a
-            b
-            aPenalties
-            bPenalties
-          }
-        }
+const MATCHES_QUERY = gql`
+  {
+    games {
+      id
+      phase
+      date
+      teamA {
+        code
+        name
+        group
       }
-    `}
-  >
+      teamB {
+        code
+        name
+      }
+      result {
+        a
+        b
+        aPenalties
+        bPenalties
+      }
+    }
+  }
+`
+
+const MatchesPageConnectedToGQL = () => (
+  <Query query={MATCHES_QUERY}>
     {({ loading, error, data }) => {
       if (loading) return <div>Ładuję</div>
       if (error) return <div>Error :(</div>
@@ -41,3 +41,4 @@ const MatchesPageConnectedToGQL = () => (
 )
 
 export default MatchesPageConnectedToGQL
+export { MATCHES_QUERY }

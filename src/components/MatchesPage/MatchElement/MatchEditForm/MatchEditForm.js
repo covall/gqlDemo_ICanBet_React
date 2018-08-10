@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Flex } from 'reflexbox'
 import styled from 'styled-components'
+import getFormData from 'get-form-data'
 
 import { Button, TextField } from '../../../Form'
 import Match from '../../../Match'
@@ -19,14 +20,28 @@ class MatchEditForm extends Component {
   }
 
   render() {
-    const { data, onComplete } = this.props
-    const { date, phase, group, teamA, teamB, result } = data
+    const { data, editMatch, onComplete } = this.props
+    const { id, date, phase, group, teamA, teamB, result } = data
+    const groupPhase = phase === 'Grupa'
 
     return (
       <form
         autoComplete="off"
         onSubmit={e => {
           e.preventDefault()
+
+          const formData = getFormData(e.currentTarget)
+
+          editMatch(id, {
+            a: Number(formData.resultA),
+            b: Number(formData.resultB),
+            aPenalties: formData.resultPenaltyA
+              ? Number(formData.resultPenaltyA)
+              : null,
+            bPenalties: formData.resultPenaltyB
+              ? Number(formData.resultPenaltyB)
+              : null
+          })
 
           onComplete()
         }}
@@ -54,10 +69,20 @@ class MatchEditForm extends Component {
             />
           }
           resultPenaltyA={
-            <TextField name="resultPenaltyA" defaultValue={result.aPenalties} />
+            !groupPhase && (
+              <TextField
+                name="resultPenaltyA"
+                defaultValue={result.aPenalties}
+              />
+            )
           }
           resultPenaltyB={
-            <TextField name="resultPenaltyB" defaultValue={result.bPenalties} />
+            !groupPhase && (
+              <TextField
+                name="resultPenaltyB"
+                defaultValue={result.bPenalties}
+              />
+            )
           }
         />
 

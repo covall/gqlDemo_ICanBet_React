@@ -1,1 +1,1 @@
-export { default } from './MatchesPageConnected'
+export { default, MATCHES_QUERY } from './MatchesPageConnected'

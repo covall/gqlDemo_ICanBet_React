@@ -4,6 +4,7 @@ import gql from 'graphql-tag'
 
 import BetResultEditForm from './BetResultEditForm'
 import { BETS_QUERY } from '../../BetsPage'
+import getErrorMessages from '../../../utils/getErrorMessages'
 import { showError, showSuccess } from '../../../utils/toast'
 
 const MAKE_BET = gql`
@@ -22,7 +23,12 @@ const MAKE_BET = gql`
 const BetResultEditFormConnectedToGQL = props => (
   <Mutation
     mutation={MAKE_BET}
-    onError={() => showError('Ups, coś poszło nie tak!')}
+    onError={error => {
+      const messages = getErrorMessages(error)
+      const genericMessage = 'Ups, coś poszło nie tak!'
+
+      showError(messages || genericMessage)
+    }}
     onCompleted={() => showSuccess('WOW! Udało Ci się obstawić wynik.')}
   >
     {mutate => (
