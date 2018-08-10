@@ -30,7 +30,10 @@ const MatchEditFormConnectedToGQL = props => (
 
       showError(messages || genericMessage)
     }}
-    onCompleted={() => showSuccess('Zmodyfikowałeś wynik gry.')}
+    onCompleted={() => {
+      showSuccess('Zmodyfikowałeś wynik gry.')
+      props.onCompleted()
+    }}
   >
     {mutate => (
       <MatchEditForm

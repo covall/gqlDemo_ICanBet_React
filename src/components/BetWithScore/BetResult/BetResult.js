@@ -42,7 +42,7 @@ class BetResult extends Component {
           <BetResultEditForm
             bet={bet}
             game={game}
-            onComplete={() => this.toggleEditMode(false)}
+            onCompleted={() => this.toggleEditMode(false)}
           />
         </Modal>
       </Fragment>

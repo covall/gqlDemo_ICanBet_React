@@ -7,6 +7,15 @@ import { Button, TextField } from '../../../Form'
 import Match from '../../../Match'
 
 class MatchEditForm extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      resultA: this.props.data.result.a,
+      resultB: this.props.data.result.b
+    }
+  }
+
   onResultAChange(e) {
     const value = Number(e.currentTarget.value)
 
@@ -20,7 +29,8 @@ class MatchEditForm extends Component {
   }
 
   render() {
-    const { data, editMatch, onComplete } = this.props
+    const { data, editMatch } = this.props
+    const { resultA, resultB } = this.state
     const { id, date, phase, group, teamA, teamB, result } = data
     const groupPhase = phase === 'Grupa'
 
@@ -42,8 +52,6 @@ class MatchEditForm extends Component {
               ? Number(formData.resultPenaltyB)
               : null
           })
-
-          onComplete()
         }}
       >
         <Match
@@ -69,7 +77,7 @@ class MatchEditForm extends Component {
             />
           }
           resultPenaltyA={
-            !groupPhase && (
+            (!groupPhase && resultA === resultB) && (
               <TextField
                 name="resultPenaltyA"
                 defaultValue={result.aPenalties}
@@ -77,7 +85,7 @@ class MatchEditForm extends Component {
             )
           }
           resultPenaltyB={
-            !groupPhase && (
+            (!groupPhase && resultA === resultB) && (
               <TextField
                 name="resultPenaltyB"
                 defaultValue={result.bPenalties}

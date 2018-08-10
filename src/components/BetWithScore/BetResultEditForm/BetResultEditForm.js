@@ -29,7 +29,7 @@ class BetResultEditForm extends Component {
   }
 
   render() {
-    const { bet, game, makeBet, onComplete } = this.props
+    const { bet, game, makeBet } = this.props
     const { resultA, resultB } = this.state
     const groupPhase = game.phase === 'Grupa'
 
@@ -47,9 +47,6 @@ class BetResultEditForm extends Component {
           }
 
           makeBet(game.id, bet.gambler.id, betNumbers)
-
-          // TODO: consider move it to onCompleted callback
-          onComplete()
         }}
       >
         <Match

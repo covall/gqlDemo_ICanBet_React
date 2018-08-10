@@ -50,7 +50,7 @@ class MatchElement extends Component {
         >
           <MatchEditForm
             data={data}
-            onComplete={() => this.toggleEditMode(false)}
+            onCompleted={() => this.toggleEditMode(false)}
           />
         </Modal>
       </Fragment>
