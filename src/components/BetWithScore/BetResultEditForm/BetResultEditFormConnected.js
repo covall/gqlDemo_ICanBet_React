@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
 
@@ -26,17 +26,15 @@ const BetResultEditFormConnectedToGQL = props => (
     onCompleted={() => showSuccess('WOW! Udało Ci się obstawić wynik.')}
   >
     {mutate => (
-      <Fragment>
-        <BetResultEditForm
-          {...props}
-          makeBet={(gameId, gamblerId, betNumbers) => {
-            mutate({
-              variables: { gameId, gamblerId, betNumbers },
-              refetchQueries: [{ query: BETS_QUERY }]
-            })
-          }}
-        />
-      </Fragment>
+      <BetResultEditForm
+        {...props}
+        makeBet={(gameId, gamblerId, betNumbers) => {
+          mutate({
+            variables: { gameId, gamblerId, betNumbers },
+            refetchQueries: [{ query: BETS_QUERY }]
+          })
+        }}
+      />
     )}
   </Mutation>
 )
