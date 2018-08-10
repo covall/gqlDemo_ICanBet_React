@@ -45,8 +45,8 @@ const Match = withMedia(
           <ResultDetails large={sizeLarge}>
             <Result large={sizeLarge}>
               {resultA} : {resultB}{' '}
-              {resultPenaltyA &&
-                resultPenaltyB && (
+              {resultPenaltyA != null &&
+                resultPenaltyB != null && (
                   <Fragment>
                     ({resultPenaltyA} : {resultPenaltyB})
                   </Fragment>

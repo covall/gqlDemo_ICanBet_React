@@ -77,20 +77,20 @@ class MatchEditForm extends Component {
             />
           }
           resultPenaltyA={
-            (!groupPhase && resultA === resultB) && (
+            (!groupPhase && resultA === resultB) ? (
               <TextField
                 name="resultPenaltyA"
                 defaultValue={result.aPenalties}
               />
-            )
+            ) : null
           }
           resultPenaltyB={
-            (!groupPhase && resultA === resultB) && (
+            (!groupPhase && resultA === resultB) ? (
               <TextField
                 name="resultPenaltyB"
                 defaultValue={result.bPenalties}
               />
-            )
+            ) : null
           }
         />
 
