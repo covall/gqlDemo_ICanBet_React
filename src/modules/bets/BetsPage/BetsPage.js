@@ -1,9 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import { StickyTable, Row, Cell as StickyTableCell } from 'react-sticky-table'
-import slugify from '../../../utils/slugify'
+import loader from 'hoc-react-loader'
 
-import { Match, PageContent, PageTitle } from '../../../components'
+import slugify from '../../../utils/slugify'
+import { Match, PageContent, PageTitle, Spinner } from '../../../components'
 import TotalResult from '../TotalResult'
 import BetWithScore from '../BetWithScore'
 
@@ -78,4 +79,8 @@ const GamblerName = styled.div`
   margin-bottom: 13px;
 `
 
-export default BetsPage
+export default loader({
+  LoadingIndicator: Spinner,
+  print: props => props.gamblers.length,
+  delay: 200
+})(BetsPage)

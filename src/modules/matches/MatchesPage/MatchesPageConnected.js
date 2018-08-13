@@ -32,7 +32,6 @@ const MATCHES_QUERY = gql`
 const MatchesPageConnectedToGQL = () => (
   <Query query={MATCHES_QUERY}>
     {({ loading, error, data }) => {
-      if (loading) return <div>Ładuję</div>
       if (error) return <div>Error :(</div>
 
       return <MatchesPage data={data.games || []} />

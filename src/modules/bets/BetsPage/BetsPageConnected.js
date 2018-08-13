@@ -48,7 +48,6 @@ const BETS_QUERY = gql`
 const BetsPageConnectedToGQL = () => (
   <Query query={BETS_QUERY}>
     {({ loading, error, data }) => {
-      if (loading) return <div>Ładuję</div>
       if (error) return <div>Error :(</div>
 
       return (
