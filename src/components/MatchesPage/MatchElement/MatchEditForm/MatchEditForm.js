@@ -29,7 +29,7 @@ class MatchEditForm extends Component {
   }
 
   render() {
-    const { data, editMatch } = this.props
+    const { data, editMatch, loading } = this.props
     const { resultA, resultB } = this.state
     const { id, date, phase, group, teamA, teamB, result } = data
     const groupPhase = phase === 'Grupa'
@@ -95,7 +95,7 @@ class MatchEditForm extends Component {
         />
 
         <SaveContainer justify="flex-end">
-          <Button type="submit">Zapisz</Button>
+          <Button type="submit" disabled={loading}>Zapisz</Button>
         </SaveContainer>
       </form>
     )

@@ -34,9 +34,10 @@ const BetResultEditFormConnectedToGQL = props => (
       props.onCompleted()
     }}
   >
-    {mutate => (
+    {(mutate, result) => (
       <BetResultEditForm
         {...props}
+        loading={result.loading}
         makeBet={(gameId, gamblerId, betNumbers) => {
           mutate({
             variables: { gameId, gamblerId, betNumbers },

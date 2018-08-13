@@ -29,7 +29,7 @@ class BetResultEditForm extends Component {
   }
 
   render() {
-    const { bet, game, makeBet } = this.props
+    const { bet, game, makeBet, loading } = this.props
     const { resultA, resultB } = this.state
     const groupPhase = game.phase === 'Grupa'
 
@@ -73,18 +73,23 @@ class BetResultEditForm extends Component {
           }
         />
 
-        {resultA === resultB && !groupPhase && (
-          <WinInPenaltiesContainer align="center">
-            <WinInPenaltiesText>Wygrany w rzutach karnych:</WinInPenaltiesText>
-            <TextField
-              name="winInPenalties"
-              defaultValue={bet.betNumbers.winInPenalties}
-            />
-          </WinInPenaltiesContainer>
-        )}
+        {resultA === resultB &&
+          !groupPhase && (
+            <WinInPenaltiesContainer align="center">
+              <WinInPenaltiesText>
+                Wygrany w rzutach karnych:
+              </WinInPenaltiesText>
+              <TextField
+                name="winInPenalties"
+                defaultValue={bet.betNumbers.winInPenalties}
+              />
+            </WinInPenaltiesContainer>
+          )}
 
         <SaveContainer justify="flex-end">
-          <Button type="submit">Zapisz</Button>
+          <Button type="submit" disabled={loading}>
+            Zapisz
+          </Button>
         </SaveContainer>
       </form>
     )

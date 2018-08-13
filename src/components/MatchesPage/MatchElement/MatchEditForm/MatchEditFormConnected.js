@@ -1,5 +1,5 @@
 import React from 'react'
-import { Mutation } from 'react-apollo'
+import { Mutation, withApollo } from 'react-apollo'
 import gql from 'graphql-tag'
 
 import getErrorMessages from '../../../../utils/getErrorMessages'
@@ -35,9 +35,10 @@ const MatchEditFormConnectedToGQL = props => (
       props.onCompleted()
     }}
   >
-    {mutate => (
+    {(mutate, result) => (
       <MatchEditForm
         {...props}
+        loading={result.loading}
         editMatch={(id, result) => {
           mutate({
             variables: { id, result },
@@ -49,4 +50,4 @@ const MatchEditFormConnectedToGQL = props => (
   </Mutation>
 )
 
-export default MatchEditFormConnectedToGQL
+export default withApollo(MatchEditFormConnectedToGQL)

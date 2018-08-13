@@ -1,22 +1,18 @@
 import React, { Fragment } from 'react'
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
 import { MediaQueryProvider } from 'react-media-query-hoc'
-import ApolloClient from 'apollo-boost'
 import { ApolloProvider } from 'react-apollo'
 import { ToastContainer } from 'react-toastify'
 
+import apolloClient from '../../init/apollo'
 import mediaQueries from '../../config/mediaQueries'
 import Menu from '../Menu'
 import MatchesPage from '../MatchesPage'
 import BetsPage from '../BetsPage'
 import ResultsPage from '../ResultsPage'
 
-const client = new ApolloClient({
-  uri: 'http://localhost:4000/'
-})
-
 const App = () => (
-  <ApolloProvider client={client}>
+  <ApolloProvider client={apolloClient}>
     <MediaQueryProvider queries={mediaQueries}>
       <BrowserRouter>
         <Fragment>
