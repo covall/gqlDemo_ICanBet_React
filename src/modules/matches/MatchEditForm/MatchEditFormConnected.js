@@ -2,10 +2,10 @@ import React from 'react'
 import { Mutation, withApollo } from 'react-apollo'
 import gql from 'graphql-tag'
 
-import getErrorMessages from '../../../../utils/getErrorMessages'
-import { showError, showSuccess } from '../../../../utils/toast'
-import { MATCHES_QUERY } from '../../../MatchesPage'
-import { BETS_QUERY } from '../../../BetsPage'
+import getErrorMessages from '../../../utils/getErrorMessages'
+import { showError, showSuccess } from '../../../utils/toast'
+import { MATCHES_QUERY } from '../MatchesPage'
+import { BETS_QUERY } from '../../bets/BetsPage'
 import MatchEditForm from './MatchEditForm'
 
 const EDIT_GAME_RESULT = gql`

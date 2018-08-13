@@ -2,10 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import loader from 'hoc-react-loader'
 
-import PageTitle from '../PageTitle'
-import PageContent from '../PageContent'
-import Spinner from '../Spinner'
-import MatchElement from './MatchElement'
+import { PageContent, PageTitle, Spinner } from '../../../components'
+import MatchElement from '../MatchElement'
 
 const MatchesPage = ({ data }) => (
   <PageTitle title="Mecze">

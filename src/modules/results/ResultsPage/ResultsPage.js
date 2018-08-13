@@ -2,8 +2,7 @@ import React from 'react'
 import ReactHighcharts from 'react-highcharts'
 
 import chartConfig from './chart'
-import PageTitle from '../PageTitle'
-import PageContent from '../PageContent'
+import { PageContent, PageTitle } from '../../../components'
 
 const ResultsPage = ({ data }) => {
   const config = chartConfig(data)

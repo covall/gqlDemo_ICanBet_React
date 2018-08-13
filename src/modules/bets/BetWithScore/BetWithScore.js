@@ -1,8 +1,8 @@
 import React from 'react'
 import { Flex, Box } from 'reflexbox'
 
-import BetResult from './BetResult'
-import Score from '../Score'
+import { Score } from '../../../components'
+import BetResult from '../BetResult'
 
 const BetWithScore = ({ bet, game }) => (
   <Flex justify="space-between" align="center">

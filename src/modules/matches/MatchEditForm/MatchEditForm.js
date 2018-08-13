@@ -3,8 +3,8 @@ import { Flex } from 'reflexbox'
 import styled from 'styled-components'
 import getFormData from 'get-form-data'
 
-import { Button, TextField } from '../../../Form'
-import Match from '../../../Match'
+import { Match } from '../../../components'
+import { Button, TextField } from '../../../components/Form'
 
 class MatchEditForm extends Component {
   constructor(props) {
@@ -77,7 +77,7 @@ class MatchEditForm extends Component {
             />
           }
           resultPenaltyA={
-            (!groupPhase && resultA === resultB) ? (
+            !groupPhase && resultA === resultB ? (
               <TextField
                 name="resultPenaltyA"
                 defaultValue={result.aPenalties}
@@ -85,7 +85,7 @@ class MatchEditForm extends Component {
             ) : null
           }
           resultPenaltyB={
-            (!groupPhase && resultA === resultB) ? (
+            !groupPhase && resultA === resultB ? (
               <TextField
                 name="resultPenaltyB"
                 defaultValue={result.bPenalties}
@@ -95,7 +95,9 @@ class MatchEditForm extends Component {
         />
 
         <SaveContainer justify="flex-end">
-          <Button type="submit" disabled={loading}>Zapisz</Button>
+          <Button type="submit" disabled={loading}>
+            Zapisz
+          </Button>
         </SaveContainer>
       </form>
     )

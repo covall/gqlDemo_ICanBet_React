@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import styled from 'styled-components'
 
-import Modal from '../../Modal'
+import { Modal } from '../../../components'
 import BetResultEditForm from '../BetResultEditForm'
 
 class BetResult extends Component {
@@ -37,6 +37,7 @@ class BetResult extends Component {
           onClose={() => this.toggleEditMode(false)}
           width={320}
           height={120}
+          key={`editBet-${bet.id}-${Math.random()}`}
           title="Edytuj zakład"
         >
           <BetResultEditForm

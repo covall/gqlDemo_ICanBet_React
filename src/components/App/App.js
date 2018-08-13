@@ -7,9 +7,9 @@ import { ToastContainer } from 'react-toastify'
 import apolloClient from '../../init/apollo'
 import mediaQueries from '../../config/mediaQueries'
 import Menu from '../Menu'
-import MatchesPage from '../MatchesPage'
-import BetsPage from '../BetsPage'
-import ResultsPage from '../ResultsPage'
+import MatchesPage from '../../modules/matches/MatchesPage'
+import BetsPage from '../../modules/bets/BetsPage'
+import ResultsPage from '../../modules/results/ResultsPage'
 
 const App = () => (
   <ApolloProvider client={apolloClient}>

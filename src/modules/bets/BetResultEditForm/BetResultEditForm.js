@@ -3,8 +3,8 @@ import { Flex } from 'reflexbox'
 import getFormData from 'get-form-data'
 import styled from 'styled-components'
 
-import { Button, TextField } from '../../Form'
-import Match from '../../Match'
+import { Match } from '../../../components'
+import { Button, TextField } from '../../../components/Form'
 
 class BetResultEditForm extends Component {
   constructor(props) {

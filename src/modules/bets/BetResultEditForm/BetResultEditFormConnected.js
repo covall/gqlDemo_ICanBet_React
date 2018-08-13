@@ -3,7 +3,7 @@ import { Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
 
 import BetResultEditForm from './BetResultEditForm'
-import { BETS_QUERY } from '../../BetsPage'
+import { BETS_QUERY } from '../BetsPage'
 import getErrorMessages from '../../../utils/getErrorMessages'
 import { showError, showSuccess } from '../../../utils/toast'
 

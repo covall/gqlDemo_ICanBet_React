@@ -1,11 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import { StickyTable, Row, Cell as StickyTableCell } from 'react-sticky-table'
-import slugify from '../../utils/slugify'
+import slugify from '../../../utils/slugify'
 
-import PageTitle from '../PageTitle'
-import PageContent from '../PageContent'
-import Match from '../Match'
+import { Match, PageContent, PageTitle } from '../../../components'
 import TotalResult from '../TotalResult'
 import BetWithScore from '../BetWithScore'
 

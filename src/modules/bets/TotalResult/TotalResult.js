@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Flex } from 'reflexbox'
 
-import Score from '../Score'
+import { Score } from '../../../components'
 
 const TotalResult = ({ place, score }) => (
   <Flex>
