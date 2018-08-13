@@ -22,7 +22,6 @@ const BetsPage = ({ gamblers, games }) => (
           ))}
         </Row>
 
-        {/* GAMES - bo wierszy jest DOKŁADNIE tyle ile gier a nie zakładów */}
         {games.map(game => (
           <Row key={`game-${game.id}`}>
             <Cell first>
