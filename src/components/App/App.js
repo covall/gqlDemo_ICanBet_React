@@ -30,7 +30,7 @@ const App = () => (
             <Route path="/results" render={() => <ResultsPage />} />
           </Switch>
 
-          <ToastContainer />
+          <ToastContainer toastClassName="Toast__body" />
         </Fragment>
       </BrowserRouter>
     </MediaQueryProvider>
