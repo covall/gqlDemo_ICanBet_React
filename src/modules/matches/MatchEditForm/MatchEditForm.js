@@ -79,7 +79,7 @@ class MatchEditForm extends Component {
             />
           }
           resultPenaltyA={
-            renderPenaltyField({ groupPhase, resultA, resultB }) ? (
+            shouldRenderPenaltyField({ groupPhase, resultA, resultB }) ? (
               <TextField
                 name="resultPenaltyA"
                 defaultValue={result.aPenalties}
@@ -87,7 +87,7 @@ class MatchEditForm extends Component {
             ) : null
           }
           resultPenaltyB={
-            renderPenaltyField({ groupPhase, resultA, resultB }) ? (
+            shouldRenderPenaltyField({ groupPhase, resultA, resultB }) ? (
               <TextField
                 name="resultPenaltyB"
                 defaultValue={result.bPenalties}
@@ -106,7 +106,7 @@ class MatchEditForm extends Component {
   }
 }
 
-const renderPenaltyField = ({ groupPhase, resultA, resultB }) => {
+const shouldRenderPenaltyField = ({ groupPhase, resultA, resultB }) => {
   if (groupPhase) {
     return false
   }
