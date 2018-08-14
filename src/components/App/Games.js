@@ -1,6 +1,4 @@
 import React from 'react'
-import gql from 'graphql-tag'
-import { Query } from 'react-apollo'
 // {
 //   id: ID!
 //   phase: String!
@@ -21,51 +19,69 @@ import { Query } from 'react-apollo'
 //   }
 // }
 
-const FetchGames = () => (
-  <Query
-    query={gql`
-      {
-        games {
-          id
-          phase
-          teamA {
-            code
-          }
-          teamB {
-            code
-          }
-          result {
-            a
-            b
-          }
-        }
+const MockGames = () => {
+  const games = [
+    {
+      id: 1,
+      phase: 'Grupa',
+      teamA: {
+        code: 'RUS'
+      },
+      teamB: {
+        code: 'SAU'
+      },
+      result: {
+        a: 5,
+        b: 0
       }
-    `}
-  >
-    {({ loading, error, data }) => {
-      if (loading) return <div>Ładowanie...</div>
-      if (error) return <div>Wystąpił błąd :(</div>
+    },
+    {
+      id: 2,
+      phase: 'Ćwierćfinał',
+      teamA: {
+        code: 'EGY'
+      },
+      teamB: {
+        code: 'URY'
+      },
+      result: {
+        a: 0,
+        b: 1
+      }
+    },
+    {
+      id: 3,
+      phase: 'Finał',
+      teamA: {
+        code: 'MAR'
+      },
+      teamB: {
+        code: 'IRN'
+      },
+      result: {
+        a: 0,
+        b: 1
+      }
+    }
+  ]
 
-      const games = data.games
-
-      return <Games data={games} />
-    }}
-  </Query>
-)
+  return <Games data={games} />
+}
 
 const Games = ({ data }) => (
   <div>
     <h1>Mecze:</h1>
 
-    {data.map(game => (
-      <div key={game.id}>
-        Faza: {game.phase}
-        <br />
-        {game.teamA.code} - {game.teamB.code} ({game.result.a}:{game.result.b})
-        <hr />
-      </div>
-    ))}
+    {Array.isArray(data) &&
+      data.map(game => (
+        <div key={game.id}>
+          Faza: {game.phase}
+          <br />
+          {game.teamA.code} - {game.teamB.code} ({game.result.a}:{game.result.b})
+          <hr />
+        </div>
+      ))}
   </div>
 )
 
-export default FetchGames
+export default MockGames
