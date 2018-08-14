@@ -1,6 +1,0 @@
-export { default as Match } from './Match'
-export { default as Modal } from './Modal'
-export { default as PageContent } from './PageContent'
-export { default as PageTitle } from './PageTitle'
-export { default as Score } from './Score'
-export { default as Spinner } from './Spinner'
