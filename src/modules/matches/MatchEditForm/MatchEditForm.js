@@ -17,13 +17,15 @@ class MatchEditForm extends Component {
   }
 
   onResultAChange(e) {
-    const value = Number(e.currentTarget.value)
+    const inputValue = e.currentTarget.value
+    const value = inputValue ? Number(inputValue) : null
 
     this.setState({ resultA: value })
   }
 
   onResultBChange(e) {
-    const value = Number(e.currentTarget.value)
+    const inputValue = e.currentTarget.value
+    const value = inputValue ? Number(inputValue) : null
 
     this.setState({ resultB: value })
   }
@@ -77,7 +79,7 @@ class MatchEditForm extends Component {
             />
           }
           resultPenaltyA={
-            !groupPhase && resultA === resultB ? (
+            renderPenaltyField({ groupPhase, resultA, resultB }) ? (
               <TextField
                 name="resultPenaltyA"
                 defaultValue={result.aPenalties}
@@ -85,7 +87,7 @@ class MatchEditForm extends Component {
             ) : null
           }
           resultPenaltyB={
-            !groupPhase && resultA === resultB ? (
+            renderPenaltyField({ groupPhase, resultA, resultB }) ? (
               <TextField
                 name="resultPenaltyB"
                 defaultValue={result.bPenalties}
@@ -102,6 +104,18 @@ class MatchEditForm extends Component {
       </form>
     )
   }
+}
+
+const renderPenaltyField = ({ groupPhase, resultA, resultB }) => {
+  if (groupPhase) {
+    return false
+  }
+
+  if (resultA === null || resultB === null) {
+    return false
+  }
+
+  return resultA === resultB
 }
 
 const SaveContainer = styled(Flex)`
