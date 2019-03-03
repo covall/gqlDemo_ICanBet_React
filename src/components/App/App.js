@@ -10,6 +10,7 @@ import Menu from '../Menu'
 import MatchesPage from '../../modules/matches/MatchesPage'
 import BetsPage from '../../modules/bets/BetsPage'
 import ResultsPage from '../../modules/results/ResultsPage'
+import GlobalStyle from '../../components/GlobalStyle'
 
 const App = () => (
   <ApolloProvider client={apolloClient}>
@@ -30,6 +31,7 @@ const App = () => (
             <Route path="/results" render={() => <ResultsPage />} />
           </Switch>
 
+          <GlobalStyle />
           <ToastContainer toastClassName="Toast__body" />
         </Fragment>
       </BrowserRouter>
