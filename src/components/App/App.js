@@ -79,10 +79,4 @@ const IconContainer = styled.div`
   line-height: 1;
 `
 
-const NavLinkStyled = styled(NavLink)`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`
-
 export default App
