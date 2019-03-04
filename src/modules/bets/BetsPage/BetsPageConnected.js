@@ -51,7 +51,7 @@ const BetsPageConnectedToGQL = () => (
       if (error) return <div>Error :(</div>
 
       return (
-        <BetsPage gamblers={data.gamblers || []} games={data.games || []} />
+        <BetsPage gamblers={data.gamblers} games={data.games} />
       )
     }}
   </Query>

@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+import styled from 'styled-components'
 import {
   BrowserRouter,
   Redirect,
@@ -9,6 +10,7 @@ import {
 import { MediaQueryProvider } from 'react-media-query-hoc'
 import { ApolloProvider } from 'react-apollo'
 import { GiSoccerBall, GiSoccerField, GiTicket } from 'react-icons/gi'
+import { Flex } from 'reflexbox'
 
 import apolloClient from '../../init/apollo'
 import mediaQueries from '../../config/mediaQueries'
@@ -26,20 +28,32 @@ const App = () => (
           <Menu>
             <Menu.Item key="/matches">
               <NavLink to="/matches">
-                <GiSoccerField />
-                Mecze
+                <Flex justify="space-between" align="center">
+                  <IconContainer>
+                    <GiSoccerField />
+                  </IconContainer>
+                  <span>Mecze</span>
+                </Flex>
               </NavLink>
             </Menu.Item>
             <Menu.Item key="/bets">
               <NavLink to="/bets">
-                <GiTicket />
-                Zakłady
+                <Flex justify="space-between" align="center">
+                  <IconContainer>
+                    <GiTicket />
+                  </IconContainer>
+                  <span>Zakłady</span>
+                </Flex>
               </NavLink>
             </Menu.Item>
             <Menu.Item key="/results">
               <NavLink to="/results">
-                <GiSoccerBall />
-                Wyniki
+                <Flex justify="space-between" align="center">
+                  <IconContainer>
+                    <GiSoccerBall />
+                  </IconContainer>
+                  <span>Wyniki</span>
+                </Flex>
               </NavLink>
             </Menu.Item>
           </Menu>
@@ -58,5 +72,17 @@ const App = () => (
     </MediaQueryProvider>
   </ApolloProvider>
 )
+
+const IconContainer = styled.div`
+  margin-right: 10px;
+  font-size: 18px;
+  line-height: 1;
+`
+
+const NavLinkStyled = styled(NavLink)`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`
 
 export default App

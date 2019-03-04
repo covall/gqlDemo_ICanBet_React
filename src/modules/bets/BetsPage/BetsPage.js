@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { StickyTable, Row, Cell as StickyTableCell } from 'react-sticky-table'
 import loader from 'hoc-react-loader'
@@ -8,7 +9,12 @@ import { Match, PageContent, PageTitle, Spinner } from '../../../components'
 import TotalResult from '../TotalResult'
 import BetWithScore from '../BetWithScore'
 
-const BetsPage = ({ gamblers, games }) => (
+const propTypes = {
+  gamblers: PropTypes.array,
+  games: PropTypes.array
+}
+
+const BetsPage = ({ gamblers = [], games = [] }) => (
   <PageTitle title="Zakłady">
     <PageContent fullWidth>
       <StickyTable>
@@ -56,6 +62,8 @@ const BetsPage = ({ gamblers, games }) => (
   </PageTitle>
 )
 
+BetsPage.propTypes = propTypes
+
 const Cell = styled(({ children, className }) => (
   <StickyTableCell className={className}>{children}</StickyTableCell>
 ))`
@@ -80,6 +88,6 @@ const GamblerName = styled.div`
 
 export default loader({
   LoadingIndicator: Spinner,
-  print: props => props.gamblers.length,
+  print: props => props.gamblers && props.gamblers.length,
   delay: 200
 })(BetsPage)
