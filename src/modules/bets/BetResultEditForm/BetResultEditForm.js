@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { Flex } from 'reflexbox'
 import getFormData from 'get-form-data'
 import styled from 'styled-components'
+import { Button, Input, InputNumber } from 'antd'
 
 import { Match } from '../../../components'
-import { Button, TextField } from '../../../components/Form'
 
 class BetResultEditForm extends Component {
   constructor(props) {
@@ -16,15 +16,11 @@ class BetResultEditForm extends Component {
     }
   }
 
-  onResultAChange(e) {
-    const value = Number(e.currentTarget.value)
-
+  onResultAChange(value) {
     this.setState({ resultA: value })
   }
 
-  onResultBChange(e) {
-    const value = Number(e.currentTarget.value)
-
+  onResultBChange(value) {
     this.setState({ resultB: value })
   }
 
@@ -58,14 +54,14 @@ class BetResultEditForm extends Component {
           teamBCode={game.teamB.code}
           teamBName={game.teamB.name}
           resultA={
-            <TextField
+            <InputNumber
               name="resultA"
               defaultValue={bet.betNumbers.a}
-              onChange={e => this.onResultAChange(e)}
+              onChange={value => this.onResultAChange(value)}
             />
           }
           resultB={
-            <TextField
+            <InputNumber
               name="resultB"
               defaultValue={bet.betNumbers.b}
               onChange={e => this.onResultBChange(e)}
@@ -79,7 +75,7 @@ class BetResultEditForm extends Component {
               <WinInPenaltiesText>
                 Wygrany w rzutach karnych:
               </WinInPenaltiesText>
-              <TextField
+              <Input
                 name="winInPenalties"
                 defaultValue={bet.betNumbers.winInPenalties}
               />
@@ -87,7 +83,12 @@ class BetResultEditForm extends Component {
           )}
 
         <SaveContainer justify="flex-end">
-          <Button type="submit" disabled={loading}>
+          <Button
+            type="primary"
+            disabled={loading}
+            loading={loading}
+            htmlType="submit"
+          >
             Zapisz
           </Button>
         </SaveContainer>
@@ -97,7 +98,7 @@ class BetResultEditForm extends Component {
 }
 
 const SaveContainer = styled(Flex)`
-  margin: 20px 0;
+  margin-top: 40px;
 `
 
 const WinInPenaltiesContainer = styled(Flex)`

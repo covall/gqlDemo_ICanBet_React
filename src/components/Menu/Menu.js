@@ -1,19 +1,13 @@
 import React from 'react'
-import styled from 'styled-components'
-import { Flex } from 'reflexbox'
+import { withRouter } from 'react-router-dom'
+import { Menu } from 'antd'
 
-import MenuLink from './MenuLink'
-
-const Menu = ({ children, className }) => (
-  <Flex align="center" justify="center" className={className}>
+const AppMenu = ({ children, location }) => (
+  <Menu selectedKeys={[location.pathname]} mode="horizontal" theme="dark">
     {children}
-  </Flex>
+  </Menu>
 )
 
-Menu.Item = MenuLink
+AppMenu.Item = Menu.Item
 
-export default styled(Menu)`
-  height: 66px;
-  background: #fff;
-  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
-`
+export default withRouter(AppMenu)

@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import styled from 'styled-components'
+import { Modal } from 'antd'
 
-import { Modal } from '../../../components'
 import BetResultEditForm from '../BetResultEditForm'
 
 class BetResult extends Component {
@@ -33,12 +33,11 @@ class BetResult extends Component {
         </div>
 
         <Modal
-          visible={this.state.editMode}
-          onClose={() => this.toggleEditMode(false)}
-          width={320}
-          height={120}
-          key={`editBet-${bet.id}-${Math.random()}`}
+          width={410}
           title="Edytuj zakład"
+          visible={this.state.editMode}
+          onCancel={() => this.toggleEditMode(false)}
+          footer={null}
         >
           <BetResultEditForm
             bet={bet}
