@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Flex } from 'reflexbox'
 import getFormData from 'get-form-data'
 import styled from 'styled-components'
-import { Button, Input, InputNumber } from 'antd'
+import { Button, Input as InputComponent, InputNumber } from 'antd'
 
 import { Match } from '../../../components'
 
@@ -97,17 +97,21 @@ class BetResultEditForm extends Component {
   }
 }
 
+const Input = styled(InputComponent)`
+  width: 50px;
+`
+
 const SaveContainer = styled(Flex)`
-  margin-top: 40px;
+  margin-top: 20px;
 `
 
 const WinInPenaltiesContainer = styled(Flex)`
-  position: absolute;
-  margin: 20px 0;
+  margin-top: 50px;
 `
 
 const WinInPenaltiesText = styled(Flex)`
-  margin-right: 5px;
+  margin-right: 9px;
+  font-size: 13px;
 `
 
 export default BetResultEditForm

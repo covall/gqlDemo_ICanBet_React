@@ -110,7 +110,6 @@ const MatchDetails = styled.div`
   justify-content: space-between;
   align-items: center;
   flex: 1 1 auto;
-  border: 1px solid #d7d7d7;
   border-radius: 5px;
 `
 
@@ -138,7 +137,7 @@ const Result = styled.div`
 
 const Phase = styled.div`
   position: absolute;
-  margin-top: ${props => (props.large ? 3 : 13)}px;
+  margin-top: 5px;
   top: 100%;
   font-size: 10px;
   opacity: 0.3;
