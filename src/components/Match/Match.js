@@ -110,6 +110,7 @@ const MatchDetails = styled.div`
   justify-content: space-between;
   align-items: center;
   flex: 1 1 auto;
+  border: 1px solid #d7d7d7;
   border-radius: 5px;
 `
 

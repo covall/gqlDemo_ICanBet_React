@@ -1,2 +1,2 @@
-import './init/react'
 import './init/styles'
+import './init/react'

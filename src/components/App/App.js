@@ -14,7 +14,7 @@ import { Flex } from 'reflexbox'
 
 import apolloClient from '../../init/apollo'
 import mediaQueries from '../../config/mediaQueries'
-import Menu from '../Menu'
+import Menu, { MenuItem } from '../Menu'
 import MatchesPage from '../../modules/matches/MatchesPage'
 import BetsPage from '../../modules/bets/BetsPage'
 import ResultsPage from '../../modules/results/ResultsPage'
@@ -26,7 +26,7 @@ const App = () => (
       <BrowserRouter>
         <Fragment>
           <Menu>
-            <Menu.Item key="/matches">
+            <MenuItem key="/matches">
               <NavLink to="/matches">
                 <Flex justify="space-between" align="center">
                   <IconContainer>
@@ -35,8 +35,8 @@ const App = () => (
                   <span>Mecze</span>
                 </Flex>
               </NavLink>
-            </Menu.Item>
-            <Menu.Item key="/bets">
+            </MenuItem>
+            <MenuItem key="/bets">
               <NavLink to="/bets">
                 <Flex justify="space-between" align="center">
                   <IconContainer>
@@ -45,8 +45,8 @@ const App = () => (
                   <span>Zakłady</span>
                 </Flex>
               </NavLink>
-            </Menu.Item>
-            <Menu.Item key="/results">
+            </MenuItem>
+            <MenuItem key="/results">
               <NavLink to="/results">
                 <Flex justify="space-between" align="center">
                   <IconContainer>
@@ -55,7 +55,7 @@ const App = () => (
                   <span>Wyniki</span>
                 </Flex>
               </NavLink>
-            </Menu.Item>
+            </MenuItem>
           </Menu>
 
           <Route exact path="/" render={() => <Redirect to="/matches" />} />

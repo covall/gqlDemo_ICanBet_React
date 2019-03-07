@@ -1,7 +1,8 @@
 import React from 'react'
+import styled from 'styled-components'
 import { Flex, Box } from 'reflexbox'
 
-import { Score } from '../../../components'
+import { Score as ScoreComponent } from '../../../components'
 import BetResult from '../BetResult'
 
 const BetWithScore = ({ bet, game }) => (
@@ -12,5 +13,9 @@ const BetWithScore = ({ bet, game }) => (
     {bet.points !== null && <Score>{bet.points}</Score>}
   </Flex>
 )
+
+const Score = styled(ScoreComponent)`
+  margin-left: 20px;
+`
 
 export default BetWithScore

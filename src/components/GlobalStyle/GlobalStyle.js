@@ -3,9 +3,10 @@ import reset from 'styled-reset'
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
+  
+  @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700&subset=latin-ext');
 
   body {
-    @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700&subset=latin-ext');
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     overflow: hidden;

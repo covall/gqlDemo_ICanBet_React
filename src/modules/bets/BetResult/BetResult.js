@@ -1,53 +1,41 @@
-import React, { Component, Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 import styled from 'styled-components'
 import { Modal } from 'antd'
 
 import BetResultEditForm from '../BetResultEditForm'
 
-class BetResult extends Component {
-  state = {
-    editMode: false
-  }
+const BetResult = ({ bet, game, className }) => {
+  const resultA = bet.betNumbers.a
+  const resultB = bet.betNumbers.b
+  const penaltyWinner = bet.betNumbers.winInPenalties
 
-  toggleEditMode(mode) {
-    this.setState({
-      editMode: mode
-    })
-  }
+  const [editMode, toggleEditMode] = useState(false)
 
-  render() {
-    const { bet, game, className } = this.props
-    const resultA = bet.betNumbers.a
-    const resultB = bet.betNumbers.b
-    const penaltyWinner = bet.betNumbers.winInPenalties
+  return (
+    <Fragment>
+      <div
+        className={className}
+        onClick={() => toggleEditMode(true)}
+        title="Kliknij, aby edytować"
+      >
+        {resultA} : {resultB}
+        {penaltyWinner && ` (${penaltyWinner})`}
+      </div>
 
-    return (
-      <Fragment>
-        <div
-          className={className}
-          onClick={() => this.toggleEditMode(true)}
-          title="Kliknij, aby edytować"
-        >
-          {resultA} : {resultB}
-          {penaltyWinner && ` (${penaltyWinner})`}
-        </div>
-
-        <Modal
-          width={410}
-          title="Edytuj zakład"
-          visible={this.state.editMode}
-          onCancel={() => this.toggleEditMode(false)}
-          footer={null}
-        >
-          <BetResultEditForm
-            bet={bet}
-            game={game}
-            onCompleted={() => this.toggleEditMode(false)}
-          />
-        </Modal>
-      </Fragment>
-    )
-  }
+      <Modal
+        title="Edytuj zakład"
+        visible={editMode}
+        onCancel={() => toggleEditMode(false)}
+        footer={null}
+      >
+        <BetResultEditForm
+          bet={bet}
+          game={game}
+          onCompleted={() => toggleEditMode(false)}
+        />
+      </Modal>
+    </Fragment>
+  )
 }
 
 export default styled(BetResult)`

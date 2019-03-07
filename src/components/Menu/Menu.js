@@ -8,6 +8,5 @@ const AppMenu = ({ children, location }) => (
   </Menu>
 )
 
-AppMenu.Item = Menu.Item
-
+export const MenuItem = Menu.Item
 export default withRouter(AppMenu)
