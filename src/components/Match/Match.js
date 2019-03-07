@@ -127,7 +127,7 @@ const ResultDetails = styled.div`
   flex-direction: column;
   align-items: center;
   position: relative;
-  margin: 0 ${props => (props.large ? 30 : 8)}px;
+  margin: 0 ${props => (props.large ? 30 : 20)}px;
 `
 
 const Result = styled.div`

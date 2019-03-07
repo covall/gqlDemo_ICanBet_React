@@ -17,15 +17,13 @@ class MatchEditForm extends Component {
     }
   }
 
-  onResultAChange(e) {
-    const inputValue = e.currentTarget.value
+  onResultAChange(inputValue) {
     const value = inputValue ? Number(inputValue) : null
 
     this.setState({ resultA: value })
   }
 
-  onResultBChange(e) {
-    const inputValue = e.currentTarget.value
+  onResultBChange(inputValue) {
     const value = inputValue ? Number(inputValue) : null
 
     this.setState({ resultB: value })
@@ -69,14 +67,14 @@ class MatchEditForm extends Component {
             <InputNumber
               name="resultA"
               defaultValue={result.a}
-              onChange={e => this.onResultAChange(e)}
+              onChange={value => this.onResultAChange(value)}
             />
           }
           resultB={
             <InputNumber
               name="resultB"
               defaultValue={result.b}
-              onChange={e => this.onResultBChange(e)}
+              onChange={value => this.onResultBChange(value)}
             />
           }
           resultPenaltyA={

@@ -64,7 +64,7 @@ class BetResultEditForm extends Component {
             <InputNumber
               name="resultB"
               defaultValue={bet.betNumbers.b}
-              onChange={e => this.onResultBChange(e)}
+              onChange={value => this.onResultBChange(value)}
             />
           }
         />
