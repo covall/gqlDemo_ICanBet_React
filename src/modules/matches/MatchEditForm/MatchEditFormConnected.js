@@ -31,7 +31,7 @@ const MatchEditFormConnectedToGQL = props => (
       showError(messages || genericMessage)
     }}
     onCompleted={() => {
-      showSuccess('Zmodyfikowałeś wynik gry.')
+      showSuccess('Zmodyfikowano wynik gry.')
       props.onCompleted()
     }}
   >

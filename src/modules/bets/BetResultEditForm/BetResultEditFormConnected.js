@@ -30,7 +30,7 @@ const BetResultEditFormConnectedToGQL = props => (
       showError(messages || genericMessage)
     }}
     onCompleted={() => {
-      showSuccess('WOW! Udało Ci się obstawić wynik.')
+      showSuccess('Obstawiono wynik.')
       props.onCompleted()
     }}
   >
