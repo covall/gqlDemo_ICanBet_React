@@ -5,7 +5,7 @@ import { Flex } from 'reflexbox'
 import { Score } from '../../../components'
 
 const TotalResult = ({ place, score }) => (
-  <Flex>
+  <Flex justify="center">
     <Flex column>
       <Label>Miejsce</Label>
       <Score large white label="Punkty" left>

@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react'
+import { Modal } from 'antd'
 import styled from 'styled-components'
 
-import { Match, Modal } from '../../../components'
+import { Match } from '../../../components'
 import MatchEditForm from '../MatchEditForm'
 
 class MatchElement extends Component {
@@ -41,12 +42,11 @@ class MatchElement extends Component {
         </MatchContainer>
 
         <Modal
-          visible={this.state.editMode}
-          onClose={() => this.toggleEditMode(false)}
-          width={320}
-          height={120}
-          key={`editResult-${data.id}-${Math.random()}`}
+          width={410}
           title="Edytuj wynik"
+          visible={this.state.editMode}
+          onCancel={() => this.toggleEditMode(false)}
+          footer={null}
         >
           <MatchEditForm
             data={data}

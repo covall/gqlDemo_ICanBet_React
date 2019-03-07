@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
+import { Button } from 'antd'
 import { Flex } from 'reflexbox'
 import styled from 'styled-components'
 import getFormData from 'get-form-data'
+import { InputNumber } from 'antd'
 
 import { Match } from '../../../components'
-import { Button, TextField } from '../../../components/Form'
 
 class MatchEditForm extends Component {
   constructor(props) {
@@ -65,14 +66,14 @@ class MatchEditForm extends Component {
           teamBCode={teamB.code}
           teamBName={teamB.name}
           resultA={
-            <TextField
+            <InputNumber
               name="resultA"
               defaultValue={result.a}
               onChange={e => this.onResultAChange(e)}
             />
           }
           resultB={
-            <TextField
+            <InputNumber
               name="resultB"
               defaultValue={result.b}
               onChange={e => this.onResultBChange(e)}
@@ -80,7 +81,7 @@ class MatchEditForm extends Component {
           }
           resultPenaltyA={
             shouldRenderPenaltyField({ groupPhase, resultA, resultB }) ? (
-              <TextField
+              <InputNumber
                 name="resultPenaltyA"
                 defaultValue={result.aPenalties}
               />
@@ -88,7 +89,7 @@ class MatchEditForm extends Component {
           }
           resultPenaltyB={
             shouldRenderPenaltyField({ groupPhase, resultA, resultB }) ? (
-              <TextField
+              <InputNumber
                 name="resultPenaltyB"
                 defaultValue={result.bPenalties}
               />
@@ -97,7 +98,12 @@ class MatchEditForm extends Component {
         />
 
         <SaveContainer justify="flex-end">
-          <Button type="submit" disabled={loading}>
+          <Button
+            type="primary"
+            disabled={loading}
+            loading={loading}
+            htmlType="submit"
+          >
             Zapisz
           </Button>
         </SaveContainer>
@@ -119,7 +125,7 @@ const shouldRenderPenaltyField = ({ groupPhase, resultA, resultB }) => {
 }
 
 const SaveContainer = styled(Flex)`
-  margin: 20px 0;
+  margin-top: 40px;
 `
 
 export default MatchEditForm
