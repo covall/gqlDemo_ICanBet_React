@@ -37,12 +37,13 @@ class BetResultEditForm extends Component {
 
           const formData = getFormData(e.currentTarget)
           const betNumbers = {
-            a: formData.resultA,
-            b: formData.resultB,
+            a: Number(formData.resultA),
+            b: Number(formData.resultB),
             winInPenalties: formData.winInPenalties
           }
+          const gameId = Number(game.id)
 
-          makeBet(game.id, bet.gambler.id, betNumbers)
+          makeBet(gameId, bet.gambler.id, betNumbers)
         }}
       >
         <Match
