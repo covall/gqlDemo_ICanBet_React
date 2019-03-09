@@ -25,6 +25,7 @@ const BETS_QUERY = gql`
         bPenalties
       }
       bets {
+        id
         gambler {
           id
         }

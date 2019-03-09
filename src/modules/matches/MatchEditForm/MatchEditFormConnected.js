@@ -35,10 +35,10 @@ const MatchEditFormConnectedToGQL = props => (
       props.onCompleted()
     }}
   >
-    {(mutate, result) => (
+    {(mutate, { loading }) => (
       <MatchEditForm
         {...props}
-        loading={result.loading}
+        loading={loading}
         editMatch={(id, result) => {
           mutate({
             variables: { id, result },
