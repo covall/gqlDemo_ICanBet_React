@@ -10,7 +10,7 @@ const BetWithScore = ({ bet, game }) => (
     <Box>
       <BetResult game={game} bet={bet} />
     </Box>
-    {bet.points !== null && <Score>{bet.points}</Score>}
+    {bet && bet.points !== null && <Score>{bet.points}</Score>}
   </Flex>
 )
 

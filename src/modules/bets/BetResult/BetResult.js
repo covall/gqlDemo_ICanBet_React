@@ -5,9 +5,9 @@ import { Modal } from 'antd'
 import BetResultEditForm from '../BetResultEditForm'
 
 const BetResult = ({ bet, game, className }) => {
-  const resultA = bet.betNumbers.a
-  const resultB = bet.betNumbers.b
-  const penaltyWinner = bet.betNumbers.winInPenalties
+  const resultA = bet ? bet.betNumbers.a : '-'
+  const resultB = bet ? bet.betNumbers.b : '-'
+  const penaltyWinner = bet ? bet.betNumbers.winInPenalties : '-'
 
   const [editMode, toggleEditMode] = useState(false)
 

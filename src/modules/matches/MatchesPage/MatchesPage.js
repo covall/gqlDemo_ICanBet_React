@@ -5,6 +5,7 @@ import loader from 'hoc-react-loader'
 
 import { PageContent, PageTitle, Spinner } from '../../../components'
 import MatchElement from '../MatchElement'
+import AddRandomMatch from '../AddRandomMatch'
 
 const propTypes = {
   data: PropTypes.array
@@ -14,6 +15,10 @@ const MatchesPage = ({ data = [] }) => (
   <PageTitle title="Mecze">
     <PageContent>
       <MatchesContainer>
+        <Actions>
+          <AddRandomMatch />
+        </Actions>
+
         {data.map(element => (
           <MatchElement data={element} key={`match-${element.id}`} />
         ))}
@@ -25,7 +30,15 @@ const MatchesPage = ({ data = [] }) => (
 MatchesPage.propTypes = propTypes
 
 const MatchesContainer = styled.div`
-  padding: 80px 0;
+  position: relative;
+  padding: 100px 40px 40px;
+`
+
+const Actions = styled.div`
+  position: fixed;
+  z-index: 10;
+  top: 60px;
+  right: 10px;
 `
 
 export default loader({

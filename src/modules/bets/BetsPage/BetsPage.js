@@ -77,12 +77,12 @@ const TableWrapper = styled.div`
 const Cell = styled.td`
   padding-right: ${props => (props.first ? '135px' : '20px')};
   position: ${props => props.first && 'sticky'};
-  left: ${props => props.first && '20px'};
+  left: ${props => props.first && '0px'};
   text-align: center;
   padding-left: 20px;
   padding-top: 15px;
   padding-bottom: 15px;
-  border-right: 1px solid #979797;
+  border-right: 1px dotted #979797;
   vertical-align: middle;
   background-color: #fff;
 `
@@ -90,12 +90,12 @@ const Cell = styled.td`
 const HeadCell = styled.th`
   position: sticky;
   top: 0;
-  left: ${props => props.first && '20px'};
+  left: ${props => props.first && '0px'};
   z-index: ${props => (props.first ? 20 : 10)};
   padding-top: 40px;
   padding-bottom: 30px;
   text-align: center;
-  border-right: 1px solid #979797;
+  border-right: 1px dotted #979797;
   background-color: #fff;
 `
 

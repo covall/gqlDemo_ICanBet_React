@@ -31,7 +31,7 @@ const MatchElement = ({ data }) => {
       </MatchContainer>
 
       <Modal
-        width={410}
+        width={425}
         title="Edytuj wynik"
         visible={editMode}
         onCancel={() => toggleEditMode(false)}
