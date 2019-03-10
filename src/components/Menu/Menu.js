@@ -2,7 +2,7 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { Menu } from 'antd'
 
-const AppMenu = ({ children, location }) => (
+const AppMenu = React.memo(({ children, location }) => (
   <Menu
     selectedKeys={[location.pathname]}
     mode="horizontal"
@@ -11,7 +11,7 @@ const AppMenu = ({ children, location }) => (
   >
     {children}
   </Menu>
-)
+))
 
 export const MenuItem = Menu.Item
 export default withRouter(AppMenu)

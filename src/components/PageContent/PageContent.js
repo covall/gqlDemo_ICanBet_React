@@ -8,13 +8,13 @@ const propTypes = {
   fullWidth: PropTypes.bool
 }
 
-const PageContent = ({ children, fullWidth }) => (
+const PageContent = React.memo(({ children, fullWidth }) => (
   <Wrapper className="scrollingContainer">
     <InnerWrapper fullWidth={fullWidth}>
       <Contents fullWidth={fullWidth}>{children}</Contents>
     </InnerWrapper>
   </Wrapper>
-)
+))
 
 const Wrapper = styled.div`
   display: flex;

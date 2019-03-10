@@ -39,7 +39,7 @@ class BetResultEditForm extends Component {
           const betNumbers = {
             a: Number(formData.resultA),
             b: Number(formData.resultB),
-            winInPenalties: formData.winInPenalties
+            winInPenalties: formData.winInPenalties || null
           }
           const gameId = Number(game.id)
 

@@ -4,7 +4,7 @@ import { Modal } from 'antd'
 
 import BetResultEditForm from '../BetResultEditForm'
 
-const BetResult = ({ bet, game, className }) => {
+const BetResult = React.memo(({ bet, game, className }) => {
   const resultA = bet ? bet.betNumbers.a : '-'
   const resultB = bet ? bet.betNumbers.b : '-'
   const penaltyWinner = bet ? bet.betNumbers.winInPenalties : '-'
@@ -36,7 +36,7 @@ const BetResult = ({ bet, game, className }) => {
       </Modal>
     </Fragment>
   )
-}
+})
 
 export default styled(BetResult)`
   font-size: 16px;
