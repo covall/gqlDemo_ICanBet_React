@@ -23,10 +23,12 @@ const BetResult = React.memo(({ bet, game, className }) => {
       </div>
 
       <Modal
+        width={425}
         title="Edytuj zakład"
         visible={editMode}
         onCancel={() => toggleEditMode(false)}
         footer={null}
+        centered
       >
         <BetResultEditForm
           bet={bet}

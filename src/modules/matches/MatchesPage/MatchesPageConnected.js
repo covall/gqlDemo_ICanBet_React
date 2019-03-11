@@ -5,7 +5,7 @@ import gql from 'graphql-tag'
 import MatchesPage from './MatchesPage'
 
 const MATCHES_QUERY = gql`
-  {
+  query MATCHES_QUERY {
     games {
       id
       phase

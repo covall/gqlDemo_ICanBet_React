@@ -7,7 +7,7 @@ import ResultsPage from './ResultsPage'
 const ResultsPageConnectedToGQL = () => (
   <Query
     query={gql`
-      {
+      query RESULTS {
         games {
           id
         }

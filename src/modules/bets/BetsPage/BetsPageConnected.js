@@ -5,7 +5,7 @@ import gql from 'graphql-tag'
 import BetsPage from './BetsPage'
 
 const BETS_QUERY = gql`
-  {
+  query BETS_QUERY {
     games {
       id
       phase
