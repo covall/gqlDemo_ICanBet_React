@@ -10,7 +10,8 @@ import { Match } from '../../../components'
 const MatchEditForm = ({
   data: { id, date, phase, group, teamA, teamB, result },
   editMatch,
-  loading
+  loading,
+  onSave
 }) => {
   const [resultA, onResultAChange] = useState(result.a)
   const [resultB, onResultBChange] = useState(result.b)
@@ -22,8 +23,7 @@ const MatchEditForm = ({
       onSubmit={e => {
         e.preventDefault()
         const formData = getFormData(e.currentTarget)
-
-        editMatch(id, {
+        const mutationData = {
           a: Number(formData.resultA),
           b: Number(formData.resultB),
           aPenalties: formData.resultPenaltyA
@@ -32,7 +32,13 @@ const MatchEditForm = ({
           bPenalties: formData.resultPenaltyB
             ? Number(formData.resultPenaltyB)
             : null
-        })
+        }
+
+        editMatch(id, mutationData)
+
+        if (onSave) {
+          onSave({ id, ...mutationData })
+        }
       }}
     >
       <Match

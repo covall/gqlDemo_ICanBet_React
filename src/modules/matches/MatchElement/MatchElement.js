@@ -38,7 +38,11 @@ const MatchElement = ({ data }) => {
         footer={null}
         centered
       >
-        <MatchEditForm data={data} onCompleted={() => toggleEditMode(false)} />
+        <MatchEditForm
+          data={data}
+          onCompleted={() => toggleEditMode(false)}
+          // onSave={() => toggleEditMode(false)}
+        />
       </Modal>
     </Fragment>
   )

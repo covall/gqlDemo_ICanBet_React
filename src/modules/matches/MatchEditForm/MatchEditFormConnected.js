@@ -11,7 +11,10 @@ import MatchEditForm from './MatchEditForm'
 const EDIT_GAME_RESULT = gql`
   mutation EditGameResult($result: GameResultInput!, $id: ID!) {
     editGameResult(resultInput: $result, id: $id) {
+      id
+      #      __typename,
       result {
+        #        __typename
         a
         b
         aPenalties
@@ -32,7 +35,10 @@ const MatchEditFormConnectedToGQL = props => (
     }}
     onCompleted={() => {
       showSuccess('Zmodyfikowano wynik gry.')
-      props.onCompleted()
+
+      if (props.onCompleted) {
+        props.onCompleted()
+      }
     }}
   >
     {(mutate, { loading }) => (
@@ -43,6 +49,17 @@ const MatchEditFormConnectedToGQL = props => (
           mutate({
             variables: { id, result },
             refetchQueries: [{ query: MATCHES_QUERY }, { query: BETS_QUERY }]
+            // optimisticResponse: {
+            //   __typename: 'Mutation',
+            //   editGameResult: {
+            //     id,
+            //     __typename: 'Game',
+            //     result: {
+            //       __typename: 'GameResult',
+            //       ...result
+            //     }
+            //   }
+            // }
           })
         }}
       />

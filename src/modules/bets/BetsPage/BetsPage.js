@@ -106,6 +106,6 @@ const GamblerName = styled.div`
 
 export default loader({
   LoadingIndicator: Spinner,
-  print: props => props.gamblers && props.gamblers.length,
+  print: props => props.gamblers && props.games,
   delay: 200
 })(BetsPage)
