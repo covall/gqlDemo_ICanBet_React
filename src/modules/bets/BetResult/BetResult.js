@@ -23,7 +23,7 @@ const BetResult = React.memo(({ bet, game, className }) => {
       </div>
 
       <Modal
-        width={425}
+        width={360}
         title="Edytuj zakład"
         visible={editMode}
         onCancel={() => toggleEditMode(false)}

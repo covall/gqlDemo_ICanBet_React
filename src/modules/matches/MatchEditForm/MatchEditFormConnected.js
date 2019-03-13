@@ -12,9 +12,9 @@ const EDIT_GAME_RESULT = gql`
   mutation EditGameResult($result: GameResultInput!, $id: ID!) {
     editGameResult(resultInput: $result, id: $id) {
       id
-      #      __typename,
+      __typename
       result {
-        #        __typename
+        __typename
         a
         b
         aPenalties

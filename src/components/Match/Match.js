@@ -44,14 +44,16 @@ const Match = withMedia(
 
           <ResultDetails large={sizeLarge}>
             <Result large={sizeLarge}>
-              {resultA} : {resultB}{' '}
-              {resultPenaltyA != null &&
-                resultPenaltyB != null && (
-                  <Fragment>
-                    ({resultPenaltyA} : {resultPenaltyB})
-                  </Fragment>
-                )}
+              <ResultPoint>{resultA}</ResultPoint> :{' '}
+              <ResultPoint>{resultB}</ResultPoint>
             </Result>
+
+            {resultPenaltyA != null && resultPenaltyB != null && (
+              <ResultPenalties>
+                (<ResultPoint>{resultPenaltyA}</ResultPoint> :{' '}
+                <ResultPoint>{resultPenaltyB}</ResultPoint>)
+              </ResultPenalties>
+            )}
 
             <Phase large={sizeLarge}>
               {phase} {phase === 'Grupa' && group}
@@ -135,9 +137,20 @@ const Result = styled.div`
   font-size: ${props => (props.large ? '28px' : '14px')};
 `
 
+const ResultPoint = styled.div`
+  display: inline-flex;
+  max-width: 60px;
+`
+
+const ResultPenalties = styled.div`
+  margin-top: 5px;
+  font-weight: 700;
+  font-size: ${props => (props.large ? '28px' : '14px')};
+`
+
 const Phase = styled.div`
   position: absolute;
-  margin-top: 5px;
+  margin-top: 10px;
   top: 100%;
   font-size: 10px;
   opacity: 0.3;
