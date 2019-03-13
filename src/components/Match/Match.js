@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { format } from 'date-fns'
 import styled from 'styled-components'
 import { withMedia } from 'react-media-query-hoc'
