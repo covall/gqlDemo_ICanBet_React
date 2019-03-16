@@ -19,12 +19,12 @@
     "react-highcharts": "^16.0.2",
     "react-icons": "^3.5.0",
     "react-media-query-hoc": "^1.0.3",
-    "react-router-dom": "^4.3.1",
+    "react-router-dom": "^4.4.0",
     "react-scripts": "2.1.8",
     "reflexbox": "^3.0.1",
     "slugify": "^1.3.4",
     "styled-components": "^4.1.3",
-    "styled-reset": "^2.0.0"
+    "styled-reset": "^2.0.2"
   },
   "devDependencies": {
     "prettier": "^1.16.4"

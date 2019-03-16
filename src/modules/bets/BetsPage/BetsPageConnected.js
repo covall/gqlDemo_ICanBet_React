@@ -2,10 +2,11 @@ import React from 'react'
 import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
 
+import { ErrorBox } from '../../../components'
 import BetsPage from './BetsPage'
 
 const BETS_QUERY = gql`
-  query BETS_QUERY {
+  query bets {
     games {
       id
       phase
@@ -49,11 +50,9 @@ const BETS_QUERY = gql`
 const BetsPageConnectedToGQL = () => (
   <Query query={BETS_QUERY}>
     {({ loading, error, data }) => {
-      if (error) return <div>Error :(</div>
+      if (error) return <ErrorBox />
 
-      return (
-        <BetsPage gamblers={data.gamblers} games={data.games} />
-      )
+      return <BetsPage gamblers={data.gamblers} games={data.games} />
     }}
   </Query>
 )

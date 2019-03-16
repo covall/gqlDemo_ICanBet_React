@@ -52,21 +52,15 @@ const MatchEditForm = ({
         resultA={
           <InputNumber
             name="resultA"
-            defaultValue={result.a}
-            onChange={inputValue => {
-              const value = inputValue ? Number(inputValue) : null
-              onResultAChange(value)
-            }}
+            value={resultA}
+            onChange={value => onResultAChange(value)}
           />
         }
         resultB={
           <InputNumber
             name="resultB"
-            defaultValue={result.b}
-            onChange={inputValue => {
-              const value = inputValue ? Number(inputValue) : null
-              onResultBChange(value)
-            }}
+            value={resultB}
+            onChange={value => onResultBChange(value)}
           />
         }
         resultPenaltyA={
