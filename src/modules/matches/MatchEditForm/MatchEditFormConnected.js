@@ -5,7 +5,7 @@ import gql from 'graphql-tag'
 import getErrorMessages from '../../../utils/getErrorMessages'
 import { showError, showSuccess } from '../../../utils/toast'
 import { MATCHES_QUERY } from '../MatchesPage'
-import { BETS_QUERY } from '../../bets/BetsPage'
+import { GAMBLERS_WITH_BETS_QUERY } from '../../bets/BetsPage'
 import MatchEditForm from './MatchEditForm'
 
 const EDIT_GAME_RESULT = gql`
@@ -48,7 +48,7 @@ const MatchEditFormConnectedToGQL = props => (
         editMatch={(id, result) => {
           mutate({
             variables: { id, result },
-            refetchQueries: [{ query: MATCHES_QUERY }, { query: BETS_QUERY }]
+            refetchQueries: [{ query: MATCHES_QUERY }, { query: GAMBLERS_WITH_BETS_QUERY }]
             // optimisticResponse: {
             //   __typename: 'Mutation',
             //   editGameResult: {

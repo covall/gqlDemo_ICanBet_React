@@ -5,8 +5,8 @@ import gql from 'graphql-tag'
 import { ErrorBox } from '../../../components'
 import BetsPage from './BetsPage'
 
-const BETS_QUERY = gql`
-  query bets {
+const GAMBLERS_WITH_BETS_QUERY = gql`
+  query gamblersWithBets {
     games {
       id
       phase
@@ -48,7 +48,7 @@ const BETS_QUERY = gql`
 `
 
 const BetsPageConnectedToGQL = () => (
-  <Query query={BETS_QUERY}>
+  <Query query={GAMBLERS_WITH_BETS_QUERY}>
     {({ loading, error, data }) => {
       if (error) return <ErrorBox />
 
@@ -58,4 +58,4 @@ const BetsPageConnectedToGQL = () => (
 )
 
 export default BetsPageConnectedToGQL
-export { BETS_QUERY }
+export { GAMBLERS_WITH_BETS_QUERY }
