@@ -31,35 +31,38 @@ const BetsPage = ({ gamblers = [], games = [] }) => (
           </thead>
 
           <tbody>
-            {games.map(game => (
-              <tr key={`game-${game.id}`}>
-                <Cell first>
-                  <Match
-                    date={game.date}
-                    phase={game.phase}
-                    group={game.teamA.group}
-                    teamACode={game.teamA.code}
-                    teamAName={game.teamA.name}
-                    teamBCode={game.teamB.code}
-                    teamBName={game.teamB.name}
-                    resultA={game.result.a}
-                    resultB={game.result.b}
-                    resultPenaltyA={game.result.aPenalties}
-                    resultPenaltyB={game.result.bPenalties}
-                  />
-                </Cell>
+            {games.map(game => {
+              const { date, phase, teamA, teamB, result } = game
+              return (
+                <tr key={`game-${game.id}`}>
+                  <Cell first>
+                    <Match
+                      date={date}
+                      phase={phase}
+                      group={teamA.group}
+                      teamACode={teamA.code}
+                      teamAName={teamA.name}
+                      teamBCode={teamB.code}
+                      teamBName={teamB.name}
+                      resultA={result.a}
+                      resultB={result.b}
+                      resultPenaltyA={result.aPenalties}
+                      resultPenaltyB={result.bPenalties}
+                    />
+                  </Cell>
 
-                {gamblers.map((gambler, index) => {
-                  const bet = game.bets[index]
+                  {gamblers.map((gambler, index) => {
+                    const bet = game.bets[index]
 
-                  return (
-                    <Cell key={`bet-${gambler.id}-${game.id}`}>
-                      <BetWithScore game={game} bet={bet} />
-                    </Cell>
-                  )
-                })}
-              </tr>
-            ))}
+                    return (
+                      <Cell key={`bet-${gambler.id}-${game.id}`}>
+                        <BetWithScore game={game} bet={bet} />
+                      </Cell>
+                    )
+                  })}
+                </tr>
+              )
+            })}
           </tbody>
         </table>
       </TableWrapper>
