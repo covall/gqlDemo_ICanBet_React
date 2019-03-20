@@ -22,7 +22,6 @@ const MAKE_BET = gql`
 
 const BetResultEditFormConnectedToGQL = props => (
   <Mutation
-    key={props.bet.id}
     mutation={MAKE_BET}
     onError={error => {
       const messages = getErrorMessages(error)

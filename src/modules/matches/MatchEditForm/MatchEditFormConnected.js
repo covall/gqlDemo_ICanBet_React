@@ -12,9 +12,7 @@ const EDIT_GAME_RESULT = gql`
   mutation EditGameResult($result: GameResultInput!, $id: ID!) {
     editGameResult(resultInput: $result, id: $id) {
       id
-      __typename
       result {
-        __typename
         a
         b
         aPenalties
@@ -48,7 +46,7 @@ const MatchEditFormConnectedToGQL = props => (
         editMatch={(id, result) => {
           mutate({
             variables: { id, result },
-            refetchQueries: [{ query: MATCHES_QUERY }, { query: GAMBLERS_WITH_BETS_QUERY }]
+            refetchQueries: [{ query: GAMBLERS_WITH_BETS_QUERY }]
             // optimisticResponse: {
             //   __typename: 'Mutation',
             //   editGameResult: {
