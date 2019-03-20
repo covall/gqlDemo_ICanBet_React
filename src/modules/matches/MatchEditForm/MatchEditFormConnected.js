@@ -4,7 +4,6 @@ import gql from 'graphql-tag'
 
 import getErrorMessages from '../../../utils/getErrorMessages'
 import { showError, showSuccess } from '../../../utils/toast'
-import { MATCHES_QUERY } from '../MatchesPage'
 import { GAMBLERS_WITH_BETS_QUERY } from '../../bets/BetsPage'
 import MatchEditForm from './MatchEditForm'
 
