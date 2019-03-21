@@ -46,17 +46,6 @@ const MatchEditFormConnectedToGQL = props => (
           mutate({
             variables: { id, result },
             refetchQueries: [{ query: GAMBLERS_WITH_BETS_QUERY }]
-            // optimisticResponse: {
-            //   __typename: 'Mutation',
-            //   editGameResult: {
-            //     id,
-            //     __typename: 'Game',
-            //     result: {
-            //       __typename: 'GameResult',
-            //       ...result
-            //     }
-            //   }
-            // }
           })
         }}
       />
