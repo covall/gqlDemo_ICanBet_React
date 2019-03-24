@@ -8,8 +8,8 @@ import { GAMBLERS_WITH_BETS_QUERY } from '../../bets/BetsPage'
 import MatchEditForm from './MatchEditForm'
 
 const EDIT_GAME_RESULT = gql`
-  mutation EditGameResult($result: GameResultInput!, $id: ID!) {
-    editGameResult(resultInput: $result, id: $id) {
+  mutation EditGameResult($id: ID!, $result: GameResultInput!) {
+    editGameResult(id: $id, resultInput: $result) {
       id
       result {
         a

@@ -79,9 +79,10 @@ const Match = withMedia(
 const Team = styled.div`
   display: flex;
   align-items: center;
-  width: ${props => (props.large ? '300px' : 'auto')};
+  width: ${props => (props.large ? '250px' : 'auto')};
   justify-content: ${props => props.left && 'flex-start'};
   justify-content: ${props => props.right && 'flex-end'};
+  line-height: 1.3;
 `
 
 const FlagStyled = styled(({ className, code, large, teamName }) => (
