@@ -1,1 +1,1 @@
-export { default, BETS_QUERY } from './BetsPageConnected'
+export { default, GAMBLERS_WITH_BETS_QUERY } from './BetsPageConnected'

@@ -2,10 +2,11 @@ import React from 'react'
 import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
 
+import { ErrorBox } from '../../../components'
 import MatchesPage from './MatchesPage'
 
 const MATCHES_QUERY = gql`
-  {
+  query matches {
     games {
       id
       phase
@@ -32,9 +33,9 @@ const MATCHES_QUERY = gql`
 const MatchesPageConnectedToGQL = () => (
   <Query query={MATCHES_QUERY}>
     {({ loading, error, data }) => {
-      if (error) return <div>Error :(</div>
+      if (error) return <ErrorBox />
 
-      return <MatchesPage data={data.games || []} />
+      return <MatchesPage data={data.games} />
     }}
   </Query>
 )

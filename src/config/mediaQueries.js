@@ -1,9 +1,9 @@
 const mobile = {
-  min: 623
+  min: 780
 }
 
 const tablet = {
-  min: 624,
+  min: 781,
   max: 1020
 }
 

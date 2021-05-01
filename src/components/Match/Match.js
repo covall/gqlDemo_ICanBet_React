@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { format } from 'date-fns'
 import styled from 'styled-components'
 import { withMedia } from 'react-media-query-hoc'
@@ -44,14 +44,16 @@ const Match = withMedia(
 
           <ResultDetails large={sizeLarge}>
             <Result large={sizeLarge}>
-              {resultA} : {resultB}{' '}
-              {resultPenaltyA != null &&
-                resultPenaltyB != null && (
-                  <Fragment>
-                    ({resultPenaltyA} : {resultPenaltyB})
-                  </Fragment>
-                )}
+              <ResultPoint>{resultA}</ResultPoint> :{' '}
+              <ResultPoint>{resultB}</ResultPoint>
             </Result>
+
+            {resultPenaltyA != null && resultPenaltyB != null && (
+              <ResultPenalties>
+                (<ResultPoint>{resultPenaltyA}</ResultPoint> :{' '}
+                <ResultPoint>{resultPenaltyB}</ResultPoint>)
+              </ResultPenalties>
+            )}
 
             <Phase large={sizeLarge}>
               {phase} {phase === 'Grupa' && group}
@@ -77,9 +79,10 @@ const Match = withMedia(
 const Team = styled.div`
   display: flex;
   align-items: center;
-  width: ${props => (props.large ? '300px' : 'auto')};
+  width: ${props => (props.large ? '250px' : 'auto')};
   justify-content: ${props => props.left && 'flex-start'};
   justify-content: ${props => props.right && 'flex-end'};
+  line-height: 1.3;
 `
 
 const FlagStyled = styled(({ className, code, large, teamName }) => (
@@ -110,7 +113,6 @@ const MatchDetails = styled.div`
   justify-content: space-between;
   align-items: center;
   flex: 1 1 auto;
-  border: 1px solid #d7d7d7;
   border-radius: 5px;
 `
 
@@ -128,7 +130,7 @@ const ResultDetails = styled.div`
   flex-direction: column;
   align-items: center;
   position: relative;
-  margin: 0 ${props => (props.large ? 30 : 8)}px;
+  margin: 0 ${props => (props.large ? 30 : 20)}px;
 `
 
 const Result = styled.div`
@@ -136,9 +138,20 @@ const Result = styled.div`
   font-size: ${props => (props.large ? '28px' : '14px')};
 `
 
+const ResultPoint = styled.div`
+  display: inline-flex;
+  max-width: 60px;
+`
+
+const ResultPenalties = styled.div`
+  margin-top: 5px;
+  font-weight: 700;
+  font-size: ${props => (props.large ? '28px' : '14px')};
+`
+
 const Phase = styled.div`
   position: absolute;
-  margin-top: ${props => (props.large ? 3 : 13)}px;
+  margin-top: 10px;
   top: 100%;
   font-size: 10px;
   opacity: 0.3;

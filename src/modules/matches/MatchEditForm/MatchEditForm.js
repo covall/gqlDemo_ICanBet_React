@@ -1,109 +1,98 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
+import { Button } from 'antd'
 import { Flex } from 'reflexbox'
 import styled from 'styled-components'
 import getFormData from 'get-form-data'
+import { InputNumber } from 'antd'
 
 import { Match } from '../../../components'
-import { Button, TextField } from '../../../components/Form'
 
-class MatchEditForm extends Component {
-  constructor(props) {
-    super(props)
+const MatchEditForm = ({
+  data: { id, date, phase, group, teamA, teamB, result },
+  editMatch,
+  loading,
+  onSave
+}) => {
+  const [resultA, onResultAChange] = useState(result.a)
+  const [resultB, onResultBChange] = useState(result.b)
+  const groupPhase = phase === 'Grupa'
 
-    this.state = {
-      resultA: this.props.data.result.a,
-      resultB: this.props.data.result.b
-    }
-  }
+  return (
+    <form
+      autoComplete="off"
+      onSubmit={e => {
+        e.preventDefault()
+        const formData = getFormData(e.currentTarget)
+        const mutationData = {
+          a: Number(formData.resultA),
+          b: Number(formData.resultB),
+          aPenalties: formData.resultPenaltyA
+            ? Number(formData.resultPenaltyA)
+            : null,
+          bPenalties: formData.resultPenaltyB
+            ? Number(formData.resultPenaltyB)
+            : null
+        }
 
-  onResultAChange(e) {
-    const inputValue = e.currentTarget.value
-    const value = inputValue ? Number(inputValue) : null
+        editMatch(id, mutationData)
 
-    this.setState({ resultA: value })
-  }
-
-  onResultBChange(e) {
-    const inputValue = e.currentTarget.value
-    const value = inputValue ? Number(inputValue) : null
-
-    this.setState({ resultB: value })
-  }
-
-  render() {
-    const { data, editMatch, loading } = this.props
-    const { resultA, resultB } = this.state
-    const { id, date, phase, group, teamA, teamB, result } = data
-    const groupPhase = phase === 'Grupa'
-
-    return (
-      <form
-        autoComplete="off"
-        onSubmit={e => {
-          e.preventDefault()
-
-          const formData = getFormData(e.currentTarget)
-
-          editMatch(id, {
-            a: Number(formData.resultA),
-            b: Number(formData.resultB),
-            aPenalties: formData.resultPenaltyA
-              ? Number(formData.resultPenaltyA)
-              : null,
-            bPenalties: formData.resultPenaltyB
-              ? Number(formData.resultPenaltyB)
-              : null
-          })
-        }}
-      >
-        <Match
-          date={date}
-          phase={phase}
-          group={group}
-          teamACode={teamA.code}
-          teamAName={teamA.name}
-          teamBCode={teamB.code}
-          teamBName={teamB.name}
-          resultA={
-            <TextField
-              name="resultA"
-              defaultValue={result.a}
-              onChange={e => this.onResultAChange(e)}
+        if (onSave) {
+          onSave({ id, ...mutationData })
+        }
+      }}
+    >
+      <Match
+        date={date}
+        phase={phase}
+        group={group}
+        teamACode={teamA.code}
+        teamAName={teamA.name}
+        teamBCode={teamB.code}
+        teamBName={teamB.name}
+        resultA={
+          <InputNumber
+            name="resultA"
+            value={resultA}
+            onChange={value => onResultAChange(value)}
+          />
+        }
+        resultB={
+          <InputNumber
+            name="resultB"
+            value={resultB}
+            onChange={value => onResultBChange(value)}
+          />
+        }
+        resultPenaltyA={
+          shouldRenderPenaltyField({ groupPhase, resultA, resultB }) ? (
+            <InputNumber
+              name="resultPenaltyA"
+              defaultValue={result.aPenalties}
             />
-          }
-          resultB={
-            <TextField
-              name="resultB"
-              defaultValue={result.b}
-              onChange={e => this.onResultBChange(e)}
+          ) : null
+        }
+        resultPenaltyB={
+          shouldRenderPenaltyField({ groupPhase, resultA, resultB }) ? (
+            <InputNumber
+              name="resultPenaltyB"
+              defaultValue={result.bPenalties}
             />
-          }
-          resultPenaltyA={
-            shouldRenderPenaltyField({ groupPhase, resultA, resultB }) ? (
-              <TextField
-                name="resultPenaltyA"
-                defaultValue={result.aPenalties}
-              />
-            ) : null
-          }
-          resultPenaltyB={
-            shouldRenderPenaltyField({ groupPhase, resultA, resultB }) ? (
-              <TextField
-                name="resultPenaltyB"
-                defaultValue={result.bPenalties}
-              />
-            ) : null
-          }
-        />
+          ) : null
+        }
+      />
 
-        <SaveContainer justify="flex-end">
-          <Button type="submit" disabled={loading}>
-            Zapisz
-          </Button>
-        </SaveContainer>
-      </form>
-    )
-  }
+      <SaveContainer justify="flex-end">
+        <Button
+          type="primary"
+          disabled={loading}
+          loading={loading}
+          htmlType="submit"
+        >
+          Zapisz
+        </Button>
+      </SaveContainer>
+    </form>
+  )
 }
 
 const shouldRenderPenaltyField = ({ groupPhase, resultA, resultB }) => {
@@ -119,7 +108,7 @@ const shouldRenderPenaltyField = ({ groupPhase, resultA, resultB }) => {
 }
 
 const SaveContainer = styled(Flex)`
-  margin: 20px 0;
+  margin-top: 40px;
 `
 
 export default MatchEditForm

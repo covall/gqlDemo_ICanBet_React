@@ -1,15 +1,40 @@
-import { toast } from 'react-toastify'
+import React from 'react'
+import { message } from 'antd'
 
-const options = {
-  position: 'top-center',
-  autoClose: 3000,
-  hideProgressBar: false,
-  closeOnClick: true,
-  pauseOnHover: true
-}
+message.config({
+  top: 54,
+  duration: 3,
+  maxCount: 3
+})
 
-const showSuccess = message => toast.success(`🚀 ${message}`, options)
-const showWarn = message => toast.warn(`☢️️ ${message}`, options)
-const showError = message => toast.error(`💩 ${message}`, options)
+const showSuccess = text =>
+  message.open({
+    content: text,
+    icon: (
+      <span role="img" aria-label="success">
+        🚀
+      </span>
+    )
+  })
+
+const showWarn = text =>
+  message.open({
+    content: text,
+    icon: (
+      <span role="img" aria-label="warning">
+        ☢️
+      </span>
+    )
+  })
+
+const showError = text =>
+  message.open({
+    content: text,
+    icon: (
+      <span role="img" aria-label="error">
+        🤬
+      </span>
+    )
+  })
 
 export { showSuccess, showWarn, showError }

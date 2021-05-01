@@ -1,55 +1,44 @@
-import React, { Component, Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 import styled from 'styled-components'
+import { Modal } from 'antd'
 
-import { Modal } from '../../../components'
 import BetResultEditForm from '../BetResultEditForm'
 
-class BetResult extends Component {
-  state = {
-    editMode: false
-  }
+const BetResult = React.memo(({ bet, game, className }) => {
+  const resultA = bet ? bet.betNumbers.a : '-'
+  const resultB = bet ? bet.betNumbers.b : '-'
+  const penaltyWinner = bet ? bet.betNumbers.winInPenalties : '-'
 
-  toggleEditMode(mode) {
-    this.setState({
-      editMode: mode
-    })
-  }
+  const [editMode, toggleEditMode] = useState(false)
 
-  render() {
-    const { bet, game, className } = this.props
-    const resultA = bet.betNumbers.a
-    const resultB = bet.betNumbers.b
-    const penaltyWinner = bet.betNumbers.winInPenalties
+  return (
+    <Fragment>
+      <div
+        className={className}
+        onClick={() => toggleEditMode(true)}
+        title="Kliknij, aby edytować"
+      >
+        {resultA} : {resultB}
+        {penaltyWinner && ` (${penaltyWinner})`}
+      </div>
 
-    return (
-      <Fragment>
-        <div
-          className={className}
-          onClick={() => this.toggleEditMode(true)}
-          title="Kliknij, aby edytować"
-        >
-          {resultA} : {resultB}
-          {penaltyWinner && ` (${penaltyWinner})`}
-        </div>
-
-        <Modal
-          visible={this.state.editMode}
-          onClose={() => this.toggleEditMode(false)}
-          width={320}
-          height={120}
-          key={`editBet-${bet.id}-${Math.random()}`}
-          title="Edytuj zakład"
-        >
-          <BetResultEditForm
-            bet={bet}
-            game={game}
-            onCompleted={() => this.toggleEditMode(false)}
-          />
-        </Modal>
-      </Fragment>
-    )
-  }
-}
+      <Modal
+        width={360}
+        title="Edytuj zakład"
+        visible={editMode}
+        onCancel={() => toggleEditMode(false)}
+        footer={null}
+        centered
+      >
+        <BetResultEditForm
+          bet={bet}
+          game={game}
+          onCompleted={() => toggleEditMode(false)}
+        />
+      </Modal>
+    </Fragment>
+  )
+})
 
 export default styled(BetResult)`
   font-size: 16px;

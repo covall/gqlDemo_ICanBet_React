@@ -4,13 +4,13 @@ import gql from 'graphql-tag'
 
 import getErrorMessages from '../../../utils/getErrorMessages'
 import { showError, showSuccess } from '../../../utils/toast'
-import { MATCHES_QUERY } from '../MatchesPage'
-import { BETS_QUERY } from '../../bets/BetsPage'
+import { GAMBLERS_WITH_BETS_QUERY } from '../../bets/BetsPage'
 import MatchEditForm from './MatchEditForm'
 
 const EDIT_GAME_RESULT = gql`
-  mutation EditGameResult($result: GameResultInput!, $id: ID!) {
-    editGameResult(resultInput: $result, id: $id) {
+  mutation EditGameResult($id: ID!, $result: GameResultInput!) {
+    editGameResult(id: $id, resultInput: $result) {
+      id
       result {
         a
         b
@@ -31,18 +31,21 @@ const MatchEditFormConnectedToGQL = props => (
       showError(messages || genericMessage)
     }}
     onCompleted={() => {
-      showSuccess('Zmodyfikowałeś wynik gry.')
-      props.onCompleted()
+      showSuccess('Zmodyfikowano wynik gry.')
+
+      if (props.onCompleted) {
+        props.onCompleted()
+      }
     }}
   >
-    {(mutate, result) => (
+    {(mutate, { loading }) => (
       <MatchEditForm
         {...props}
-        loading={result.loading}
+        loading={loading}
         editMatch={(id, result) => {
           mutate({
             variables: { id, result },
-            refetchQueries: [{ query: MATCHES_QUERY }, { query: BETS_QUERY }]
+            refetchQueries: [{ query: GAMBLERS_WITH_BETS_QUERY }]
           })
         }}
       />

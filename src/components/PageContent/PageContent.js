@@ -1,15 +1,20 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import { desktop } from '../../config/mediaQueries'
 
-const PageContent = ({ children, fullWidth }) => (
-  <Wrapper>
+const propTypes = {
+  fullWidth: PropTypes.bool
+}
+
+const PageContent = React.memo(({ children, fullWidth }) => (
+  <Wrapper className="scrollingContainer">
     <InnerWrapper fullWidth={fullWidth}>
-      <Contents>{children}</Contents>
+      <Contents fullWidth={fullWidth}>{children}</Contents>
     </InnerWrapper>
   </Wrapper>
-)
+))
 
 const Wrapper = styled.div`
   display: flex;
@@ -26,9 +31,12 @@ const InnerWrapper = styled.div`
 `
 
 const Contents = styled.div`
-  padding: 0 20px;
+  padding: ${props => (props.fullWidth ? 0 : '0 20px')};
   height: 100%;
+  width: 100%;
   position: relative;
 `
+
+PageContent.propTypes = propTypes
 
 export default PageContent
